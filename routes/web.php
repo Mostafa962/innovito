@@ -63,6 +63,15 @@ Route::group(['middleware' => ['checkAdmin']], function ()
             'uses'=>'Admin\UserController@import'
             ));
 
+        /* Department */
+        Route::resource('departments', 'Admin\DepartmentController')->names([
+            'index' => 'admin.departments.index',
+            'show'  => 'admin.departments.show',
+            'store'  => 'admin.departments.store',
+            'update'  => 'admin.departments.update',
+            'delete'  => 'admin.departments.delete',
+        ]);
+
 
 
 
