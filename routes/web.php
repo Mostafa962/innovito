@@ -53,6 +53,17 @@ Route::group(['middleware' => ['checkAdmin']], function ()
             'uses'=>'Admin\MediaController@deleteFile'
             ));
 
+        /* Users */
+        Route::get('/importExportView',array(
+            'as'=>'admin.users.importview',
+            'uses'=>'Admin\UserController@importExportView'
+            ));
+        Route::post('/importUsers',array(
+            'as'=>'admin.users.import',
+            'uses'=>'Admin\UserController@import'
+            ));
+
+
 
 
     });
