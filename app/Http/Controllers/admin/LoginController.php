@@ -10,17 +10,12 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return 1;
-    }
-
-    public function show()
-    {
         return view('admin.admin_login');
     }
 
     public function login(Request $request)
     {
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+        if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password]))
         {
             return response()->json([
                 'status' => 1,
@@ -30,9 +25,15 @@ class LoginController extends Controller
         else
         {
             return response()->json([
-                'status' => 1,
+                'status' => 0,
                 'message'  => 'Wrong Credentials.',
             ]);
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('admin.home.index');
     }
 }

@@ -20,13 +20,13 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->hasRole('super-admin'))
+        if(Auth::check() && Auth::user()->hasRole('super-admin'))
         {
             return $next($request);
         }
         else
         {
-            return redirect()->route('admin.home.login');
+            return redirect()->route('admin.login.index');
         }
     }
 }

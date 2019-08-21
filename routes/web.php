@@ -18,26 +18,42 @@ Route::get('/',array(
 
 /* Panel Routes */
 Route::get('/admin/login',array(
-      'as'=>'admin.home.show',
-      'uses'=>'Admin\LoginController@show'
+      'as'=>'admin.login.index',
+      'uses'=>'Admin\LoginController@index'
       ));
-
 Route::post('/login',array(
     'as'=>'admin.home.login',
     'uses'=>'Admin\LoginController@login'
     ));
-Route::group(['middleware' => ['checkAuth']], function ()
+Route::post('/logout',array(
+    'as'=>'admin.home.logout',
+    'uses'=>'Admin\LoginController@logout'
+    ));
+
+Route::group(['middleware' => ['checkAdmin']], function ()
 {
-	Route::group(['middleware' => ['checkAdmin']], function ()
-	{
-        Route::prefix('admin')->group(function ()
-        {
-		    Route::get('/',array(
-		          'as'=>'admin.home.index',
-		          'uses'=>'Admin\LoginController@index'
-                  ));
+    Route::prefix('admin')->group(function ()
+    {
+        Route::get('/',array(
+                'as'=>'admin.home.index',
+                'uses'=>'Admin\HomeController@index'
+                ));
+
+        /* Media */
+        Route::get('/media',array(
+            'as'=>'admin.media.index',
+            'uses'=>'Admin\MediaController@index'
+            ));
+        Route::post('/media_upload',array(
+            'as'=>'admin.media.upload',
+            'uses'=>'Admin\MediaController@uploadSubmit'
+            ));
+        Route::post('/media_delete',array(
+            'as'=>'admin.media.delete',
+            'uses'=>'Admin\MediaController@deleteFile'
+            ));
 
 
-        });
+
     });
 });
