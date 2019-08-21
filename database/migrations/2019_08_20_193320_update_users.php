@@ -14,9 +14,9 @@ class UpdateUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->addColumn('bigInteger', 'department_id')->unsigned()->after('id');
+            $table->addColumn('bigInteger', 'department_id')->unsigned()->nullable()->after('id');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->addColumn('bigInteger', 'branch_id')->unsigned()->after('department_id');
+            $table->addColumn('bigInteger', 'branch_id')->unsigned()->nullable()->after('department_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->addColumn('text', 'image')->after('remember_token')->nullable();
             $table->addColumn('integer', 'score')->after('remember_token')->default(0);
