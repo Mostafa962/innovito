@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('content')   
+@section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -14,10 +14,10 @@
             <li class="active">Media</li>
             </ol>
         </section>
-    
+
         <!-- Main content -->
         <section class="content container-fluid">
-    
+
             <!--------------------------
             | Your Page Content Here |
             -------------------------->
@@ -41,7 +41,7 @@
                             -ms-filter: 'alpha(opacity=0)';
                             cursor: pointer;
                         }
-                        
+
                        #files_list p{
                             border-right: 1px solid #aaa;
                             padding: 0 10px;
@@ -61,7 +61,7 @@
                             height: 18px;
                             /* background: green; */
                         }
-                    </style>    
+                    </style>
                     <p id="loading"></p>
                 </div>
                 <div id="files_list"></div>
@@ -102,8 +102,8 @@
                                             <span>Delete</span>
                                         </button>
                                     </td>
-                                </tr>   
-                                @php $counter++; @endphp                             
+                                </tr>
+                                @php $counter++; @endphp
                             @endforeach
                         </tbody>
                         {{-- <tfoot>
@@ -120,20 +120,20 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-    
+
         </section>
         <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-    
-@endsection    
 
-@section('js')  
+@endsection
+
+@section('js')
 <script>
     $(function () {
         var t = $('#example').DataTable({
             "order": [[ 0, "desc" ]]
-        }); 
+        });
         $('#fileupload').fileupload({
             disableValidation: true,
             dataType: 'json',
@@ -156,7 +156,7 @@
                         file.size + ' KB',
                         file.type,
                         '<button type="button" class="btn btn-danger delete" data-content="' + file.fileID + '"><i class="glyphicon glyphicon-trash"></i><span>Delete</span></button>'
-                        @php $counter++; @endphp 
+                        @php $counter++; @endphp
                     ] ).draw().node();
                     $( rowNode )
                         .css( 'color', 'red' )
@@ -196,15 +196,15 @@
                         $(".overlay").toggleClass('hidden');
                     },
                     /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) { 
+                    success: function (data) {
                         var id= data.id;
                         $( '#row' + id ).html('');
                         $(".overlay").toggleClass('hidden');
                     }
-                }); 
+                });
             }
         });
-    });    
+    });
 
-</script> 
+</script>
 @endsection

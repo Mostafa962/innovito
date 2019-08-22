@@ -17,10 +17,21 @@ class LoginController extends Controller
     {
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password]))
         {
-            return response()->json([
-                'status' => 1,
-                'route'  => route('admin.home.index'),
-            ]);
+            if(Auth::user()->hasRole('super-admin'))
+            {
+                return response()->json([
+                    'status' => 1,
+                    'route'  => route('admin.home.index'),
+                ]);
+            }
+            else
+            {
+                return response()->json([
+                    'status' => 0,
+                    'message'  => 'Wrong Credentials.',
+                ]);
+            }
+
         }
         else
         {

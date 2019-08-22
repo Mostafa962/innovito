@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Validator;
 
-class DepartmentController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $categories = Category::all();
 
-        return view('admin.departments.index')
-        ->with('departments', $departments)
+        return view('admin.categories.index')
+        ->with('categories', $categories)
         ->with('counter', 1);
 
     }
@@ -44,19 +44,22 @@ class DepartmentController extends Controller
     {
         $validation = Validator::make($request->all(),
         [
-            'title' => 'required|max:51|min:3',
+            'title' => 'required|max:51|min:3|unique:categories,title',
         ]);
 
         if($validation->passes())
         {
-            $department= Department::create($request->all());
+            $category= new Category;
+            $category->title = $request->title;
+            $category->slug = trimString($request->title);
+            $category->save();
 
             return response()->json([
-                'message'        => 'department saved Successfully',
-                'errors'         => '',
-                'department_id'    => $department->id,
-                'department_title'    => $department->title,
-                'department_link_edit'=> route('admin.departments.edit', [$department->id]),
+                'message'         => 'category saved Successfully',
+                'errors'          => '',
+                'category_id'       => $category->id,
+                'category_title'    => $category->title,
+                'category_link_edit'=> route('admin.categories.edit', [$category->id]),
             ]);
         }
         else
@@ -71,7 +74,7 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,41 +85,53 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $current = Category::find($id);
 
-        $current = Department::find($id);
-
-        return view('admin.departments.edit')
+        return view('admin.categories.edit')
         ->with('current', $current)
         ->with('counter', 1);
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $validation = Validator::make($request->all(),
-        [
-            'title' => 'required|max:51|min:3',
-        ]);
+        $category =  Category::find($id);
+        if($request->title != $category->title)
+        {
+            $validation = Validator::make($request->all(),
+            [
+                'title'      => 'required|max:51|min:3|unique:categories,title',
+            ]);
+        }
+        else
+        {
+            $validation = Validator::make($request->all(),
+            [
+                'title'      => 'required|max:51|min:3',
+            ]);
+        }
 
         if($validation->passes())
         {
 
-            $department= Department::find($id)->update($request->all());
+            $category= Category::find($id);
+            $category->title = $request->title;
+            $category->slug = trimString($request->title);
+            $category->save();
 
             return response()->json([
-                'message'        => 'department saved Successfully',
+                'message'        => 'category saved Successfully',
                 'errors'         => '',
             ]);
         }
@@ -127,19 +142,18 @@ class DepartmentController extends Controller
                 'errors'  => $validation->errors()->all(),
             ]);
         }
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $department= Department::find($id);
-        $department->delete();
+        $category= Category::find($id);
+        $category->delete();
         return response()->json(array('id' => $id), 200);
     }
 }

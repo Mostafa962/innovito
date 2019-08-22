@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Department;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 
-class DepartmentController extends Controller
+class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,11 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $branches = Branch::all();
 
-        return view('admin.departments.index')
-        ->with('departments', $departments)
+        return view('admin.branches.index')
+        ->with('branches', $branches)
         ->with('counter', 1);
-
     }
 
     /**
@@ -49,14 +48,14 @@ class DepartmentController extends Controller
 
         if($validation->passes())
         {
-            $department= Department::create($request->all());
+            $branch= Branch::create($request->all());
 
             return response()->json([
-                'message'        => 'department saved Successfully',
-                'errors'         => '',
-                'department_id'    => $department->id,
-                'department_title'    => $department->title,
-                'department_link_edit'=> route('admin.departments.edit', [$department->id]),
+                'message'         => 'branch saved Successfully',
+                'errors'          => '',
+                'branch_id'       => $branch->id,
+                'branch_title'    => $branch->title,
+                'branch_link_edit'=> route('admin.branches.edit', [$branch->id]),
             ]);
         }
         else
@@ -71,7 +70,7 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,25 +81,23 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $current = Branch::find($id);
 
-        $current = Department::find($id);
-
-        return view('admin.departments.edit')
+        return view('admin.branches.edit')
         ->with('current', $current)
         ->with('counter', 1);
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -113,10 +110,10 @@ class DepartmentController extends Controller
         if($validation->passes())
         {
 
-            $department= Department::find($id)->update($request->all());
+            $branch= Branch::find($id)->update($request->all());
 
             return response()->json([
-                'message'        => 'department saved Successfully',
+                'message'        => 'branch saved Successfully',
                 'errors'         => '',
             ]);
         }
@@ -127,19 +124,18 @@ class DepartmentController extends Controller
                 'errors'  => $validation->errors()->all(),
             ]);
         }
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $id of Department
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $department= Department::find($id);
-        $department->delete();
+        $branch= Branch::find($id);
+        $branch->delete();
         return response()->json(array('id' => $id), 200);
     }
 }

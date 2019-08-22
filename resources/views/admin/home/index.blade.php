@@ -26,14 +26,14 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                        <h3>8</h3>
+                        <h3>{{$coordinators_count}}</h3>
 
                         <p>Training Coordinators</p>
                         </div>
                         <div class="icon">
                         <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{route('admin.coordinators.index')}}" class="small-box-footer">
                         More info <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -42,14 +42,14 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                        <h3>5</h3>
+                        <h3>{{$employees_count}}</h3>
 
                         <p>Employees</p>
                         </div>
                         <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{route('admin.employees.index')}}" class="small-box-footer">
                         More info <i class="fa fa-arrow-circle-right"></i>
                         </a>
                     </div>
