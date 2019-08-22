@@ -27,6 +27,10 @@ Route::post('/password/code',array(
     'as'=>'en.auth.sendCode',
     'uses'=>'english\AuthController@sendCode'
     ));
+Route::post('/password/reset',array(
+    'as'=>'en.auth.reset',
+    'uses'=>'english\AuthController@reset'
+    ));
 
 Route::group(['middleware' => ['checkAuth']], function ()
 {

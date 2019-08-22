@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
 
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
 </head>
@@ -171,22 +172,26 @@
 			</div>
 
 			<div class="modal-body">
-				<form  method="get">
+				<form  id="send-reset-code">
+                    @csrf
 					<p>Enter your email and click the send code button. You’ll receive a code in your email. Please use that
 						code below to change the old password for a new one.
 					</p>
 					<div class="form-group label-floating">
 						<label class="control-label">Your Email</label>
-						<input class="form-control" placeholder="" type="email" value="james-spiegel@yourmail.com">
+						<input class="form-control" placeholder="" type="email" name="email" required>
 					</div>
-					<button class="btn btn-purple btn-lg full-width">Send me the Code</button>
+                    <button class="btn btn-purple btn-lg full-width">Send me the Code</button>
+                </form>
+                <form  id="reset-password">
+                    @csrf
 					<div class="form-group label-floating">
 						<label class="control-label">Enter the Code</label>
-						<input class="form-control" placeholder="" type="text" value="">
+						<input class="form-control" placeholder="" type="text" name="code" required>
 					</div>
 					<div class="form-group label-floating">
 						<label class="control-label">Your New Password</label>
-						<input class="form-control" placeholder="" type="password" value="olympus">
+						<input class="form-control" placeholder="" type="password" name="new_password" required>
 					</div>
 					<button class="btn btn-primary btn-lg full-width">Change your Password!</button>
 				</form>
@@ -239,6 +244,7 @@
 <script defer src="{{asset('assets/')}}/fonts/fontawesome-all.js"></script>
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 <script>
     $('#user-login').on('submit', function(event){
@@ -258,9 +264,67 @@
                     window.location.href = data.route;
                 }
                 else{
-                    alert(data.message);
+                    Swal.fire({
+                        title: 'Error',
+                        text: data.message,
+                        type: 'error',
+                        confirmButtonText: 'Ok'
+                    })
                 }
                 $(".overlay").toggleClass('hidden');
+            }
+        })
+    });
+
+    $('#send-reset-code').on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+            url:"{{route('en.auth.sendCode')}}",
+            method:"POST",
+            data:$("#send-reset-code").serialize(),
+            dataType:'JSON',
+            beforeSend: function(){
+                $(".overlay").toggleClass('hidden');
+            },
+            success:function(data)
+            {
+                Swal.fire({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type,
+                    confirmButtonText: 'Ok'
+                })
+                $(".overlay").toggleClass('hidden');
+            }
+        })
+    });
+
+    $('#reset-password').on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+            url:"{{route('en.auth.reset')}}",
+            method:"POST",
+            data:$("#reset-password").serialize(),
+            dataType:'JSON',
+            beforeSend: function(){
+                $(".overlay").toggleClass('hidden');
+            },
+            success:function(data)
+            {
+                if(data.status)
+                {
+                    window.location.href = data.route;
+                }
+                else{
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Wrong Code',
+                        type: 'error',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+                $(".overlay").toggleClass('hidden');
+
             }
         })
     });

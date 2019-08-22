@@ -28,6 +28,7 @@
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
 
@@ -239,6 +240,7 @@
 <script defer src="{{asset('assets/')}}/fonts/fontawesome-all.js"></script>
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 <script>
     $('#admin-login').on('submit', function(event){
@@ -264,7 +266,6 @@
             }
         })
     });
-
 </script>
 </body>
 </html>

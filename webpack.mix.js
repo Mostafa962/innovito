@@ -11,15 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
-// mix.scripts([
-//     'node_modules/bootstrap/dist/js/bootstrap.js',
-//     'node_modules/selectize/dist/js/selectize.js'
-// ],  'public/js/app.js')
+// mix.js('resources/js/app.js', 'public/js')
+//     .sass('resources/sass/app.scss', 'public/css');
+mix.scripts([
+    'node_modules/sweetalert2/dist/sweetalert2.all.min.js',
+],  'public/js/app.js')
 
-// .styles([
-//     'node_modules/bootstrap/dist/css/bootstrap.css',
-//     'node_modules/selectize/dist/css/selectize.css',
-//     'resources/assets/css/app.css'
-// ],  'public/css/app.css');
+.styles([
+    'node_modules/sweetalert2/dist/sweetalert2.min.css',
+],  'public/css/app.css');

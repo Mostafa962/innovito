@@ -28,7 +28,11 @@
 
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
+
+    <!-- Custom CSS -->
+    @yield('style')
+    <!-- Custom CSS -->
 
 
 </head>
@@ -347,5 +351,10 @@
     });
 
 </script>
+
+<!-- Custom JS -->
+@yield('script')
+<!-- Custom JS -->
+
 </body>
 </html>
