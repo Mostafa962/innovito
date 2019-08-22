@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-	<title>Newsfeed</title>
+	<title>@yield('page_title')</title>
 	<link rel="icon" type="image/ico" href="{{asset('assets/')}}/img/main/logo-tb.png" />
 
 	<!-- Required meta tags always come first -->
@@ -29,7 +29,7 @@
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
-
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <!-- Custom CSS -->
     @yield('style')
     <!-- Custom CSS -->
@@ -343,6 +343,7 @@
 <script defer src="{{asset('assets/')}}/fonts/fontawesome-all.js"></script>
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {

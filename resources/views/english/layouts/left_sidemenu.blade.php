@@ -3,7 +3,7 @@
 <div class="fixed-sidebar  open ">
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-		<a href="Newsfeed.html" class="logo">
+		<a href="{{route('en.home.index')}}" class="logo">
 			<div class="img-wrap">
 				<img src="{{asset('assets/')}}/img/main/whitelogo.png" alt="Olympus">
 			</div>
@@ -71,7 +71,7 @@
 	</div>
 
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-		<a href="02-ProfilePage.html" class="logo">
+        <a href="{{route('en.home.index')}}" class="logo">
 			<div class="img-wrap">
 				<img src="{{asset('assets/')}}/img/main/whitelogo.png" alt="Olympus">
 			</div>
@@ -82,7 +82,7 @@
 
 			<ul class="left-menu">
 				<li>
-					<a href="25-FriendsBirthday.html">
+                    <a href="{{route('en.profile.index')}}">
 						<div class="author-thumb left-menu-icon" style="width: 20px; height:20px;" >
 							<img alt="author" src="{{asset('assets/')}}/img/author-page.jpg" class="avatar">
 						</div>

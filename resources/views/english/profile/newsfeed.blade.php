@@ -1,5 +1,9 @@
 @extends('english.layouts.master')
 
+@section('page_title')
+NewsFeed
+@endsection
+
 @section('content')
 <div class="container">
 	<div class="row">
