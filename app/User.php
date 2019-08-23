@@ -16,13 +16,17 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
+    protected $appends = ['first_name', 'last_name'];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'department_id', 'branch_id', 'username', 'username_slug', 'bio', 'score', 'image'
+        'name', 'email', 'password', 'department_id', 'branch_id', 'username', 'username_slug', 'bio', 'score', 'image',
+         'website', 'birthday', 'phone', 'little_description', 'birthplace', 'occupation', 
+         'facebook', 'twitter', 'linkedin'
     ];
 
     /**
@@ -42,4 +46,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFirstNameAttribute()
+    {
+        return explode(" ",$this->name, 2)[0];
+    }
+
+    public function getLastNameAttribute()
+    {
+        if(count(explode(" ",$this->name, 2)) ==  1) return '';
+        return explode(" ",$this->name, 2)[1];
+    }
+
 }

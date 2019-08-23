@@ -17,7 +17,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="03-Newsfeed.html">
+					<a href="{{route('en.home.index')}}">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 					</a>
 				</li>
@@ -84,13 +84,13 @@
 				<li>
                     <a href="{{route('en.profile.index')}}">
 						<div class="author-thumb left-menu-icon" style="width: 20px; height:20px;" >
-							<img alt="author" src="{{asset('assets/')}}/img/author-page.jpg" class="avatar">
+							<img alt="author" src="{{asset('') . Auth::user()->image}}" class="avatar">
 						</div>
-						<span class="left-menu-title">My profile</span>
+						<span class="left-menu-title">My Profile</span>
 					</a>
 				</li>
 				<li>
-					<a href="03-Newsfeed.html">
+					<a href="{{route('en.home.index')}}">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 						<span class="left-menu-title">Newsfeed</span>
 					</a>
@@ -146,7 +146,7 @@
 
 				<ul class="account-settings">
 					<li>
-						<a href="#">
+						<a href="{{route('en.profile.personal_info')}}">
 
 							<svg class="olymp-menu-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
@@ -240,7 +240,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="03-Newsfeed.html">
+						<a href="{{route('en.home.index')}}">
 							<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 							<span class="left-menu-title">Newsfeed</span>
 						</a>
@@ -297,7 +297,7 @@
 
 			<ul class="account-settings">
 				<li>
-					<a href="#">
+					<a href="{{route('en.profile.personal_info')}}">
 
 						<svg class="olymp-menu-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 

@@ -344,6 +344,7 @@
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('assets/')}}/js/functions.js"></script>
 <script>
     $.ajaxSetup({
         headers: {

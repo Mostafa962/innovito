@@ -50,4 +50,47 @@ Route::group(['middleware' => ['checkAuth']], function ()
         'uses'=>'english\ProfileController@uploadProfileImage'
         ));
 
+    Route::post('/profile/image/header/upload',array(
+        'as'=>'en.profile.uploadProfileHeaderImage',
+        'uses'=>'english\ProfileController@uploadProfileHeaderImage'
+        ));
+
+    Route::get('/profile/about',array(
+        'as'=>'en.profile.about',
+        'uses'=>'english\ProfileController@about'
+        ));
+
+    /**** Settings */
+    /* Personal Information */
+    Route::get('/profile/settings/personal-information',array(
+        'as'=>'en.profile.personal_info',
+        'uses'=>'english\ProfileController@showPersonalInfo'
+        ));
+    Route::post('/profile/settings/personal-information/save',array(
+        'as'=>'en.profile.personal_info.save',
+        'uses'=>'english\ProfileController@updatePersonalInfo'
+        ));
+
+    /* Password Changing */
+    Route::get('/profile/settings/password',array(
+        'as'=>'en.profile.password.edit',
+        'uses'=>'english\ProfileController@editPassword'
+        ));
+    Route::post('/profile/settings/password/update',array(
+        'as'=>'en.profile.password.update',
+        'uses'=>'english\ProfileController@updatePassword'
+        ));
+
+    /* Education */
+    Route::get('/profile/settings/education',array(
+        'as'=>'en.profile.education.edit',
+        'uses'=>'english\ProfileController@editEducation'
+        ));
+    Route::post('/profile/settings/education/update',array(
+        'as'=>'en.profile.education.update',
+        'uses'=>'english\ProfileController@updateEducation'
+        ));
+    /**** Settings */
+
+
 });

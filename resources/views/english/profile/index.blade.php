@@ -5,72 +5,10 @@ Profile Page | {{Auth::user()->name}}
 @endsection
 
 @section('content')
-<!-- Top Header-Profile -->
 
-<div class="container">
-	<div class="row">
-		<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-			<div class="ui-block">
-				<div class="top-header">
-					<div class="top-header-thumb">
-						<img src="{{asset('assets/')}}/img/top-header1.jpg" alt="nature">
-					</div>
-					<div class="profile-section">
-						<div class="row">
-							<div class="col col-lg-5 col-md-5 col-sm-12 col-12">
-								<ul class="profile-menu">
-									<li>
-										<a href="02-ProfilePage.html" class="active">Timeline</a>
-									</li>
-									<li>
-										<a href="05-ProfilePage-About.html">About</a>
-									</li>
-
-								</ul>
-							</div>
-							<div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
-								<ul class="profile-menu">
-									<li>
-											<a href="06-ProfilePage.html">Friends</a>
-									</li>
-									<li>
-										<div class="more">
-											<svg class="olymp-three-dots-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-											<ul class="more-dropdown more-with-triangle">
-												<li>
-													<a href="#" data-toggle="modal" data-target="#update-header-photo">Update Profile Photo</a>
-												</li>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#update-header-photo">Update Header Photo</a>
-												</li>
-												<li>
-													<a href="29-YourAccount-AccountSettings.html">Account Settings</a>
-												</li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-
-					</div>
-					<div class="top-header-author">
-						<a href="02-ProfilePage.html" class="author-thumb">
-							<img src="{{asset('assets/')}}/img/author-main1.jpg" alt="author">
-						</a>
-						<div class="author-content">
-							<a href="02-ProfilePage.html" class="h4 author-name">James Spiegel</a>
-							<div class="country">San Francisco, CA</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- ... end Top Header-Profile -->
+<!-- Top Header Profile -->
+@include('english.profile.partials.top_header_profile')
+<!-- Top Header Profile -->
 
 <div class="container">
 	<div class="row">
@@ -112,7 +50,7 @@ Profile Page | {{Auth::user()->name}}
 										</div>
 										<div class="add-options-message">
 											<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-												<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+												<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-profile-photo"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
 											</a>
 
 
@@ -245,7 +183,7 @@ Profile Page | {{Auth::user()->name}}
 										<img src="{{asset('assets/')}}/img/author-page.jpg" alt="author">
 
 										<div class="author-date">
-											<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
+											<a class="h6 post__author-name fn" href="#">James Spiegel</a>
 											<div class="post__date">
 												<time class="published" datetime="2004-07-24T18:18">
 													38 mins ago
@@ -309,7 +247,7 @@ Profile Page | {{Auth::user()->name}}
 									<div class="form-group with-icon-right ">
 										<textarea class="form-control" placeholder=""></textarea>
 										<div class="add-options-message">
-											<a href="#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
+											<a href="#" class="options-message" data-toggle="modal" data-target="#update-profile-photo">
 												<svg class="olymp-camera-icon">
 													<use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
 												</svg>
@@ -429,7 +367,7 @@ Profile Page | {{Auth::user()->name}}
 										<img src="{{asset('assets/')}}/img/author-page.jpg" alt="author">
 
 										<div class="author-date">
-											<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
+											<a class="h6 post__author-name fn" href="#">James Spiegel</a>
 											<div class="post__date">
 												<time class="published" datetime="2004-07-24T18:18">
 													38 mins ago
@@ -493,7 +431,7 @@ Profile Page | {{Auth::user()->name}}
 								<div class="form-group with-icon-right ">
 									<textarea class="form-control" placeholder=""></textarea>
 									<div class="add-options-message">
-										<a href="#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
+										<a href="#" class="options-message" data-toggle="modal" data-target="#update-profile-photo">
 											<svg class="olymp-camera-icon">
 												<use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
 											</svg>
@@ -618,7 +556,7 @@ Profile Page | {{Auth::user()->name}}
 												<img src="{{asset('assets/')}}/img/author-page.jpg" alt="author">
 
 												<div class="author-date">
-													<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
+													<a class="h6 post__author-name fn" href="#">James Spiegel</a>
 													<div class="post__date">
 														<time class="published" datetime="2004-07-24T18:18">
 															38 mins ago
@@ -682,7 +620,7 @@ Profile Page | {{Auth::user()->name}}
 											<div class="form-group with-icon-right ">
 												<textarea class="form-control" placeholder=""></textarea>
 												<div class="add-options-message">
-													<a href="#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
+													<a href="#" class="options-message" data-toggle="modal" data-target="#update-profile-photo">
 														<svg class="olymp-camera-icon">
 															<use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
 														</svg>
@@ -729,7 +667,7 @@ Profile Page | {{Auth::user()->name}}
 					<ul class="widget w-personal-info item-block">
 						<li>
 							<span class="title">About Me:</span>
-							<span class="text">Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams” Agency in Pier 56.</span>
+                            <span class="text">{{Auth::user()->little_description}}</span>
 						</li>
 						<!-- <li>
 							<span class="title">Favourite TV Shows:</span>
@@ -746,11 +684,15 @@ Profile Page | {{Auth::user()->name}}
 
 					<div class="widget w-socials">
 						<h6 class="title">Other Social Networks:</h6>
-						<a href="#" class="social-item bg-facebook">
+						<a href="https://{{Auth::user()->facebook}}" class="social-item bg-facebook">
 							<i class="fab fa-facebook-f" aria-hidden="true"></i>
 							Facebook
 						</a>
-						<a href="#" class="social-item bg-linked">
+						<a href="https://{{Auth::user()->twitter}}" class="social-item bg-twitter">
+							<i class="fab fa-twitter-f" aria-hidden="true"></i>
+							Twitter
+						</a>
+						<a href="https://{{Auth::user()->linkedin}}" class="social-item bg-linked">
 							<i class="fab fa-linkedin-in" aria-hidden="true"></i>
 							LinkedIn
 						</a>
@@ -993,297 +935,5 @@ Profile Page | {{Auth::user()->name}}
 	</div>
 </div>
 
-<!-- Window-popup Update Header Photo -->
 
-<div class="modal fade" id="update-header-photo" tabindex="-1" role="dialog" aria-labelledby="update-header-photo" aria-hidden="true">
-	<div class="modal-dialog window-popup update-header-photo" role="document">
-		<div class="modal-content">
-			<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-				<svg class="olymp-close-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-			</a>
-
-			<div class="modal-header">
-				<h6 class="title">Update Header Photo</h6>
-			</div>
-
-			<div class="modal-body ">
-                <form id="upload-profile-photo" enctype="multipart/form-data" style="display:none">
-                    @csrf
-                    <input id="profile-photo-input" type="file" name="profile_picture" style="display:none"/>
-                </form>
-				<a href="#" class="upload-photo-item">
-				<svg class="olymp-computer-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-
-				<h6>Upload Photo</h6>
-				<span>Browse your computer.</span>
-			</a>
-
-
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<!-- ... end Window-popup Update Header Photo -->
-
-<!-- Window-popup Choose from my Photo -->
-
-<div class="modal fade" id="choose-from-my-photo" tabindex="-1" role="dialog" aria-labelledby="choose-from-my-photo" aria-hidden="true">
-	<div class="modal-dialog window-popup choose-from-my-photo" role="document">
-
-		<div class="modal-content">
-			<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-				<svg class="olymp-close-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-			</a>
-			<div class="modal-header">
-				<h6 class="title">Choose from My Photos</h6>
-
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-expanded="true">
-							<svg class="olymp-photos-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-photos-icon"></use></svg>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-expanded="false">
-							<svg class="olymp-albums-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-albums-icon"></use></svg>
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="modal-body">
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div class="tab-pane active" id="home" role="tabpanel" aria-expanded="true">
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo1.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo2.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo3.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo4.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo5.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo6.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo7.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo8.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="{{asset('assets/')}}/img/choose-photo9.jpg" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-
-						<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
-						<a href="#" class="btn btn-primary btn-lg btn--half-width">Confirm Photo</a>
-
-					</div>
-					<div class="tab-pane" id="profile" role="tabpanel" aria-expanded="false">
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img src="{{asset('assets/')}}/img/choose-photo10.jpg" alt="photo">
-								<figcaption>
-									<a href="#">South America Vacations</a>
-									<span>Last Added: 2 hours ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img src="{{asset('assets/')}}/img/choose-photo11.jpg" alt="photo">
-								<figcaption>
-									<a href="#">Photoshoot Summer 2016</a>
-									<span>Last Added: 5 weeks ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img src="{{asset('assets/')}}/img/choose-photo12.jpg" alt="photo">
-								<figcaption>
-									<a href="#">Amazing Street Food</a>
-									<span>Last Added: 6 mins ago</span>
-								</figcaption>
-							</figure>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img src="{{asset('assets/')}}/img/choose-photo13.jpg" alt="photo">
-								<figcaption>
-									<a href="#">Graffity & Street Art</a>
-									<span>Last Added: 16 hours ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img src="{{asset('assets/')}}/img/choose-photo14.jpg" alt="photo">
-								<figcaption>
-									<a href="#">Amazing Landscapes</a>
-									<span>Last Added: 13 mins ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img src="{{asset('assets/')}}/img/choose-photo15.jpg" alt="photo">
-								<figcaption>
-									<a href="#">The Majestic Canyon</a>
-									<span>Last Added: 57 mins ago</span>
-								</figcaption>
-							</figure>
-						</div>
-
-
-						<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
-						<a href="#" class="btn btn-primary btn-lg disabled btn--half-width">Confirm Photo</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-<!-- ... end Window-popup Choose from my Photo -->
-
-@endsection
-@section('script')
-<script>
-    $(".upload-photo-item").on('click', function(e){
-        e.preventDefault();
-        $("#profile-photo-input:hidden").trigger('click');
-    });
-
-    // $("#profile-photo-input").change(function(){
-        // $("#upload-profile-photo").trigger('submit');
-    // });
-
-    // $('#upload-profile-photo').on('submit', function(event){
-    //     console.log('hihi');
-    //     event.preventDefault();
-    //     var formData = new FormData($(this)[0]);
-    //     $.ajax({
-    //         url:"{{route('en.profile.uploadProfileImage')}}",
-    //         method:"POST",
-    //         processData: false,
-    //         contentType: false,
-    //         data: formData,
-    //         dataType:'JSON',
-    //         beforeSend: function(){
-    //             $(".overlay").toggleClass('hidden');
-    //         },
-    //         success:function(data)
-    //         {
-    //             // if(data.status)
-    //             // {
-    //             //     window.location.href = data.route;
-    //             // }
-    //             // else{
-    //             //     Swal.fire({
-    //             //         title: 'Error',
-    //             //         text: data.message,
-    //             //         type: 'error',
-    //             //         confirmButtonText: 'Ok'
-    //             //     })
-    //             // }
-    //             $(".overlay").toggleClass('hidden');
-    //         }
-    //     });
-    // });
-
-
-    $("#profile-photo-input").change(function(){
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        var myFormData = new FormData();
-        myFormData.append('profile_picture', $(this)[0].files[0]);
-        myFormData.append('_token', CSRF_TOKEN);
-
-        $.ajax({
-            url: "{{route('en.profile.uploadProfileImage')}}",
-            method: 'POST',
-            processData: false, // important
-            contentType: false, // important
-            data: myFormData,
-            dataType : 'JSON',
-            beforeSend: function(){
-                $(".overlay").toggleClass('hidden');
-            },
-            success: function (data) {
-                Swal.fire({
-                    title: data.title,
-                    text: data.message,
-                    type: data.type,
-                    confirmButtonText: 'Ok'
-                })
-                if(data.status) $("#update-header-photo").modal('hide');
-                $(".overlay").toggleClass('hidden');
-            }
-        });
-    });
-
-</script>
 @endsection

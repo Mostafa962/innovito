@@ -268,15 +268,15 @@
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" src="{{asset('assets/')}}/img/author-page.jpg" class="avatar">
+					<img alt="author" src="{{asset('') . Auth::user()->image}}" class="avatar" style="width:36px;height:36px">
 					<span class="icon-status online"></span>
 
 				</div>
 				<a href="02-ProfilePage.html" class="author-name fn">
 					<div class="author-title">
-						James Spiegel
+						{{Auth::user()->name}}
 					</div>
-					<span class="author-subtitle">SPACE COWBOY</span>
+					<span class="author-subtitle">{{Auth::user()->occupation}}</span>
 				</a>
 			</div>
 
