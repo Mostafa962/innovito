@@ -5,7 +5,7 @@
 
 		<a href="{{route('en.home.index')}}" class="logo">
 			<div class="img-wrap">
-				<img src="{{asset('assets/')}}/img/main/whitelogo.png" alt="Olympus">
+				<img src="{{asset('') . logo()->link}}" alt="Olympus">
 			</div>
 		</a>
 
@@ -73,7 +73,7 @@
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
         <a href="{{route('en.home.index')}}" class="logo">
 			<div class="img-wrap">
-				<img src="{{asset('assets/')}}/img/main/whitelogo.png" alt="Olympus">
+				<img src="{{asset('') . logo()->link}}" alt="Olympus">
 			</div>
 
 		</a>
@@ -199,7 +199,7 @@
 
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
 		<a href="#" class="logo js-sidebar-open">
-			<img src="{{asset('assets/')}}/img/main/whitelogo.png" alt="Olympus">
+			<img src="{{asset('') . logo()->link}}" alt="Olympus">
 		</a>
 
 	</div>
@@ -207,7 +207,7 @@
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
 		<a href="#" class="logo">
 			<div class="img-wrap">
-				<img src="{{asset('assets/')}}/img/main/whitelogo.png" alt="Olympus">
+				<img src="{{asset('') . logo()->link}}" alt="Olympus">
 			</div>
 
 		</a>

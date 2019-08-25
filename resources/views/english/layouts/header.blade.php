@@ -272,7 +272,7 @@
 					<span class="icon-status online"></span>
 
 				</div>
-				<a href="02-ProfilePage.html" class="author-name fn">
+				<a href="{{route('en.home.index')}}" class="author-name fn">
 					<div class="author-title">
 						{{Auth::user()->name}}
 					</div>

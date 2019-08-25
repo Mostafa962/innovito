@@ -19,11 +19,16 @@ class CoordinatorsImport implements ToCollection, WithHeadingRow
     {
         foreach ($rows as $row)
         {
+            $email_validity = User::where('email', $row['email'])->first();
+            if($email_validity)continue;
+
             $password = time();
             $user = User::create([
                 'name' => $row['name'],
                 'email' => $row['email'],
-                'password' => bcrypt($password)
+                'password' => bcrypt($password),
+                'image' => coordinatorDefaultImage()->link,
+                'header_image' => coordinatorDefaultHeader()->link,
             ]);
             $user->assignRole('coordinator');
 

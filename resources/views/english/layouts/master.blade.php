@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 
-	<title>@yield('page_title')</title>
-	<link rel="icon" type="image/ico" href="{{asset('assets/')}}/img/main/logo-tb.png" />
+    <title>@yield('page_title')</title>
+	<link rel="icon" type="image/ico" href="{{asset('') . fav()->link}}" />
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">

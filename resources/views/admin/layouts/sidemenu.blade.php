@@ -30,7 +30,7 @@
 
       <li><a href="{{route('admin.categories.index')}}"><i class="fa fa-circle"></i> <span>Categories</span></a></li>
 
-      <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+      <li><a href="{{route('admin.settings.index')}}"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>

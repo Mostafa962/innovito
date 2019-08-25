@@ -81,4 +81,6 @@ Route::group(['middleware' => ['checkAdmin'], 'as' => 'admin.', 'namespace' => '
         /* Category */
         Route::resource('categories', 'CategoryController');
 
+        /* Setting */
+        Route::resource('settings', 'SettingController');
 });
