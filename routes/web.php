@@ -92,5 +92,12 @@ Route::group(['middleware' => ['checkAuth']], function ()
         ));
     /**** Settings */
 
+    /**** Coordinator Part */
 
+
+    Route::group(['prefix' => 'en/coordinator', 'middleware' => ['CheckCoordinator'], 'as' => 'en.coordinator.', 'namespace' => 'english\Coordinator'], function ()
+    {
+        /** Courses */
+        Route::resource('courses', 'CourseController');
+    });
 });

@@ -26,10 +26,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/Bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/Bootstrap/dist/css/bootstrap-grid.css">
 
+    <!-- Plugins -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('/plugins/adminlte/bower_components/select2/dist/css/select2.min.css')}}">
+
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
     <!-- Custom CSS -->
     @yield('style')
     <!-- Custom CSS -->
@@ -341,6 +346,9 @@
 <script src="{{asset('assets/')}}/js/main.js"></script>
 <script src="{{asset('assets/')}}/js/libs-init/libs-init.js"></script>
 <script defer src="{{asset('assets/')}}/fonts/fontawesome-all.js"></script>
+
+<!-- Select2 -->
+<script src="{{asset('/plugins/adminlte/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
