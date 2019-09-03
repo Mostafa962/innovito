@@ -154,7 +154,7 @@
 						</a>
 					</li>
 					<li>
-							<a href="#">
+							<a href="{{route('en.coordinator.courses.index')}}">
 
 								<svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 
@@ -305,7 +305,7 @@
 					</a>
 				</li>
 				<li>
-						<a href="#">
+						<a href="{{route('en.coordinator.courses.index')}}">
 
 							<svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 

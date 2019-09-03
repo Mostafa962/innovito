@@ -141,29 +141,38 @@ My Courses
 					</div>
 
 					<div class="modal-body">
-                        <form>
-							<label class="control-label">Course title</label>
-							<input class="form-control" placeholder="" value="Highschool Friends" type="text">
+                        <form method="post" id="add_course_form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="control-label">Course title</label>
+                                <input class="form-control" placeholder="" value="Highschool Friends" type="text">
+                            </div>
 
-							<label class="control-label">Course Short Description</label>
-                            <input class="form-control" placeholder="" value="Highschool Friends" type="text">
+                            <div class="form-group">
+                                <label class="control-label">Course Short Description</label>
+                                <input class="form-control" placeholder="" value="Highschool Friends" type="text">
+                            </div>
 
-                            <label class="control-label">Course description</label>
-                            <textarea class="form-control" placeholder="" value="Highschool Friends" type="text"></textarea>
-                            
-							<label class="control-label">Course Category</label>
-							<select class="form-control category-select" id="speed">
-								<option>none</option>
-								<option>Slower</option>
-								<option>Slow</option>
-								<option >Medium</option>
-								<option>Fast</option>
-								<option>Faster</option>
-                            </select>
+                            <div class="form-group">
+                                <label class="control-label">Course description</label>
+                                <textarea class="form-control" placeholder="" value="Highschool Friends" type="text"></textarea>
+                            </div>
 
-							<label class="control-label">Group Image</label>
-							<input class="form-control" placeholder="avatar image" value="Group Avatar (120x120px min)"type="file">
+                            <div class="form-group">
+                                <label class="control-label">Course Category</label>
+                                <select class="form-control category-select" id="speed">
+                                    <option>none</option>
+                                    <option>Slower</option>
+                                    <option>Slow</option>
+                                    <option >Medium</option>
+                                    <option>Fast</option>
+                                    <option>Faster</option>
+                                </select>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="control-label">Group Image</label>
+                                <input class="form-control" placeholder="avatar image" value="Group Avatar (120x120px min)"type="file">
+                            </div>
 
 						{{-- <form class="form-group label-floating is-select">
 							<svg class="olymp-happy-face-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
@@ -212,8 +221,7 @@ My Courses
 
 							</select>
 						</form> --}}
-
-                            <a href="#" class="btn btn-blue btn-lg full-width">Create Course</a>
+                            <button type="button" class="btn btn-blue btn-lg full-width">Create Course</button>
                         </form>
 					</div>
 				</div>

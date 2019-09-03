@@ -51,7 +51,7 @@ class CategoryController extends Controller
         {
             $category= new Category;
             $category->title = $request->title;
-            $category->slug = trimString($request->title);
+            $category->slug = str_slug($request->title, '-');
             $category->save();
 
             return response()->json([
