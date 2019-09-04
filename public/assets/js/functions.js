@@ -40,3 +40,31 @@ function ajaxUploadFileFromInput(input_selector, hidden_input_name, route, befor
     });
 
 }
+
+function sweetAlertErrorResponse(data)
+{
+    var span = document.createElement("span");
+    span.innerHTML=''
+    $.each(data.responseJSON.errors, function( index, value ) {
+        span.innerHTML += value +'<br>';
+    });
+    Swal.fire({
+        html:span,
+        // title: data.title,
+        // text: span,
+        type: 'error',
+        confirmButtonText: 'Ok'
+    })
+
+}
+
+function swalNormal(data)
+{
+    Swal.fire({
+        title: data.title,
+        text: data.message,
+        type: data.type,
+        confirmButtonText: 'Ok'
+    })
+
+}

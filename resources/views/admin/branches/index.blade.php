@@ -114,7 +114,7 @@
             "order": [[ 0, "desc" ]]
         });
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        $('#add_branch_form').on('submit', function(branch){
+        $('#add_branch_form').on('submit', function(event){
             event.preventDefault();
             $.ajax({
                 url:"{{ route('admin.branches.store') }}",

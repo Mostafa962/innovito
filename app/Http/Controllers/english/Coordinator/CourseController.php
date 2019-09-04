@@ -4,7 +4,12 @@ namespace App\Http\Controllers\english\Coordinator;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Course\CourseStoreRequest;
+use App\Models\Category;
+use App\Models\CompletionCriteria;
+use App\Models\CourseType;
 use App\Models\Course;
+use Auth;
 
 class CourseController extends Controller
 {
@@ -15,7 +20,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('english.coordinator.course.index');
+        $course_types = CourseType::all();
+        $completion_criterias = CompletionCriteria::all();
+        $categories = Category::all();
+
+        return view('english.coordinator.course.index')
+        ->with('course_types', $course_types)
+        ->with('completion_criterias', $completion_criterias)
+        ->with('categories', $categories);
     }
 
     /**
@@ -34,9 +46,29 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseStoreRequest $request)
     {
-        //
+        $file = $request['image'];
+        $name =  date('mdYHis') . uniqid() . $file->getClientOriginalName();
+        $name = str_replace(' ', '_', $name);
+        $request->file('image')->move('uploads/course/images/', $name);
+
+        $modifiedRequestData = $request->all();
+        $modifiedRequestData['image'] = 'uploads/course/images/'.$name;
+        $modifiedRequestData['user_id'] = Auth::user()->id;
+        $modifiedRequestData['slug']   = str_slug($request->title, '-');
+
+        $course = Course::Create($modifiedRequestData);
+
+        return response()->json([
+            'swal' => [
+                'status' => 1,
+                'type' => 'success',
+                'title' => 'Success',
+                'message' => 'Course Created Susscessfully!',
+            ],
+            'route' => route('en.coordinator.courses.show', [$course->slug])
+        ]);
     }
 
     /**
@@ -45,9 +77,9 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        return Course::where('slug', $slug)->first();
     }
 
     /**

@@ -35,18 +35,18 @@ My Courses
 			<div class="filters row">
 				<form action="#">
 						<fieldset>
-							<label for="speed">category:</label>
-							<select name="speed" id="speed">
-							<option>Slower</option>
-							<option>Slow</option>
-							<option selected="selected">Medium</option>
-							<option>Fast</option>
-							<option>Faster</option>
+							<label>category:</label>
+							<select name="speed">
+                                <option>Slower</option>
+                                <option>Slow</option>
+                                <option selected="selected">Medium</option>
+                                <option>Fast</option>
+                                <option>Faster</option>
 							</select>
 						</fieldset>
 						<fieldset>
-							<label for="speed">Sort by:</label>
-							<select name="speed" id="speed">
+							<label>Sort by:</label>
+							<select name="speed">
 								<option>Slower</option>
 								<option>Slow</option>
 								<option selected="selected">Medium</option>
@@ -142,36 +142,60 @@ My Courses
 
 					<div class="modal-body">
                         <form method="post" id="add_course_form" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
                                 <label class="control-label">Course title</label>
-                                <input class="form-control" placeholder="" value="Highschool Friends" type="text">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label">Course Short Description</label>
-                                <input class="form-control" placeholder="" value="Highschool Friends" type="text">
+                                <input class="form-control" placeholder="Course title"  type="text" name="title"  required>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Course description</label>
-                                <textarea class="form-control" placeholder="" value="Highschool Friends" type="text"></textarea>
+                                <textarea class="form-control" placeholder="Course description"  type="text" name="description" required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Course Category</label>
-                                <select class="form-control category-select" id="speed">
-                                    <option>none</option>
-                                    <option>Slower</option>
-                                    <option>Slow</option>
-                                    <option >Medium</option>
-                                    <option>Fast</option>
-                                    <option>Faster</option>
+                                <select class="form-control category-select" name="category_id" required>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Group Image</label>
-                                <input class="form-control" placeholder="avatar image" value="Group Avatar (120x120px min)"type="file">
+                                <label class="control-label">Course Type</label>
+                                <select class="form-control" name="course_type_id" required>
+                                    @foreach ($course_types as $course_type)
+                                        <option value="{{$course_type->id}}">{{$course_type->type}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Completion Criteria</label>
+                                <select class="form-control category-select" name="completion_criteria_id" required>
+                                    @foreach ($completion_criterias as $completion_criteria)
+                                        <option value="{{$completion_criteria->id}}">{{$completion_criteria->type}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Course Langage</label>
+                                <select class="form-control" name="language" required>
+                                    <option value="English">English</option>
+                                    <option value="Arabic">Arabic</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Course Image</label>
+                                <input class="form-control" placeholder="image" type="file" name="image" accept="image/*" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Course Expiration Date</label>
+                                <input class="form-control" placeholder="image" type="date" name="expired_at" required>
                             </div>
 
 						{{-- <form class="form-group label-floating is-select">
@@ -221,7 +245,7 @@ My Courses
 
 							</select>
 						</form> --}}
-                            <button type="button" class="btn btn-blue btn-lg full-width">Create Course</button>
+                            <button class="btn btn-blue btn-lg full-width">Create Course</button>
                         </form>
 					</div>
 				</div>
@@ -234,6 +258,34 @@ My Courses
 
 @section('script')
 <script>
-    $('.category-select').select2();
+    $(document).ready(function() {
+        $('.category-select').select2();
+        $('#add_course_form').on('submit', function(event){
+            event.preventDefault();
+            var formData = new FormData(document.querySelector('#add_course_form'));
+            $.ajax({
+                url:"{{ route('en.coordinator.courses.store') }}",
+                method:"POST",
+                processData: false, // important
+                contentType: false, // important
+                data:formData,
+                dataType:'JSON',
+                beforeSend: function(){
+                    $(".overlay").toggleClass('hidden');
+                },
+                success:function(data)
+                {
+                    swalNormal(data.swal);
+                    $(".overlay").toggleClass('hidden');
+                    window.location.replace(data.route);
+                },
+                error:function(data)
+                {
+                    sweetAlertErrorResponse(data);
+                }
+            })
+        });
+
+    });
 </script>
 @endsection

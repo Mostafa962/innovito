@@ -114,7 +114,7 @@
             "order": [[ 0, "desc" ]]
         });
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        $('#add_category_form').on('submit', function(category){
+        $('#add_category_form').on('submit', function(event){
             event.preventDefault();
             $.ajax({
                 url:"{{ route('admin.categories.store') }}",
