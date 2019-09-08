@@ -99,5 +99,11 @@ Route::group(['middleware' => ['checkAuth']], function ()
     {
         /** Courses */
         Route::resource('courses', 'CourseController');
+
+        /** Sections */
+        Route::resource('sections', 'SectionController');
+
+        /** Lessons */
+        Route::resource('lessons', 'LessonController');
     });
 });

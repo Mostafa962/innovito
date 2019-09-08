@@ -31,7 +31,7 @@ My Courses
 
 <div class="container">
 	<div class="row">
-		<div class="col-12 ">
+		{{-- <div class="col-12 ">
 			<div class="filters row">
 				<form action="#">
 						<fieldset>
@@ -61,7 +61,7 @@ My Courses
 
 
 
-		</div>
+		</div> --}}
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 
             <!-- Course Item -->
@@ -87,38 +87,31 @@ My Courses
             <!-- ... end Course Item -->
         </div>
 
-		{{-- <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-			<div class="ui-block" data-mh="friend-groups-item">
+        @foreach (Auth::user()->courses as $course)
+            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="ui-block" data-mh="friend-groups-item">
+                    <!-- Friend Item -->
+                    <div class="friend-item friend-groups">
+                        <div class="friend-header-thumb">
+                            <img src="{{asset('') . $course->image}}" alt="Course-Image">
+                        </div>
+                        <div class="friend-item-content">
+                            <div class="friend-avatar">
+                                <div class="author-content">
+                                    <a href="{{route('en.coordinator.courses.edit', [$course->slug])}}" class="h5 author-name">{{$course->title}}</a>
+                                    <br>
+                                    <br>
+                                    <div class="country">{{$course->description}}</div>
+                                </div>
+                            </div>
+                            <a href="{{route('en.coordinator.courses.edit', [$course->slug])}}"  class="btn btn-blue btn-md-2">Edit<div class="ripple-container"></div></a>
+                        </div>
+                    </div>
+                    <!-- ... end Friend Item -->
+                </div>
+            </div>
+        @endforeach
 
-				<!-- Friend Item -->
-
-				<div class="friend-item friend-groups">
-						<div class="friend-header-thumb">
-								<img src="{{asset('assets')}}/img/friend1.jpg" alt="friend">
-							</div>
-					<div class="friend-item-content">
-
-
-						<div class="friend-avatar">
-
-							<div class="author-content">
-								<a href="#" class="h5 author-name">course name</a>
-								<br>
-								<br>
-								<div class="country">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti deleniti error reiciendis sed, commodi blanditiis quasi. Sunt consectetur culpa doloribus quaerat vel temporibus quia possimus, quidem earum, maxime officiis aspernatur!</div>
-							</div>
-						</div>
-
-
-								<a href="#"  class="btn btn-blue btn-md-2">Enroll<div class="ripple-container"></div></a>
-
-
-
-					</div>
-				</div>
-
-				<!-- ... end Friend Item -->			</div>
-		</div> --}}
 	</div>
 </div>
 
@@ -198,53 +191,22 @@ My Courses
                                 <input class="form-control" placeholder="image" type="date" name="expired_at" required>
                             </div>
 
-						{{-- <form class="form-group label-floating is-select">
-							<svg class="olymp-happy-face-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-							<label class="control-label">add learners</label>
-							<select class="selectpicker form-control style-2 show-tick" multiple data-max-options="2" data-live-search="true">
-								<option title="Green Goo Rock" data-content='<div class="inline-items">
-													<div class="author-thumb">
-														<img src="{{asset('assets')}}/img/avatar52-sm.jpg" alt="author">
-													</div>
-														<div class="h6 author-title">Green Goo Rock</div>
+                            <div class="form-group label-floating is-select">
+                                <svg class="olymp-happy-face-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                <label class="control-label">Add Employees</label>
+                                <select class="selectpicker form-control style-2 show-tick" multiple data-max-options="10" data-live-search="true" name="employees[]" multiple>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{$employee->id}}" title="{{$employee->name}}" data-content='<div class="inline-items">
+                                            <div class="author-thumb">
+                                                <img src="{{asset('') . $employee->image}}" alt="employee" style="width:20px; height:20px">
+                                            </div>
+                                                <div class="h6 author-title">{{$employee->name}}</div>
 
-													</div>'> Goo Rock
-								</option>
-
-								<option title="Mathilda Brinker" data-content='<div class="inline-items">
-														<div class="author-thumb">
-															<img src="{{asset('assets')}}/img/avatar74-sm.jpg" alt="author">
-														</div>
-														<div class="h6 author-title">Mathilda Brinker</div>
-													</div>'>Mathilda Brinker
-								</option>
-
-								<option title="Marina Valentine" data-content='<div class="inline-items">
-														<div class="author-thumb">
-															<img src="{{asset('assets')}}/img/avatar48-sm.jpg" alt="author">
-														</div>
-														<div class="h6 author-title">Marina Valentine</div>
-													</div>'>Marina Valentine
-								</option>
-
-								<option title="Dave Marinara" data-content='<div class="inline-items">
-														<div class="author-thumb">
-															<img src="{{asset('assets')}}/img/avatar75-sm.jpg" alt="author">
-														</div>
-														<div class="h6 author-title">Dave Marinara</div>
-													</div>'>Dave Marinara
-								</option>
-
-								<option title="Rachel Howlett" data-content='<div class="inline-items">
-														<div class="author-thumb">
-															<img src="{{asset('assets')}}/img/avatar76-sm.jpg" alt="author">
-														</div>
-														<div class="h6 author-title">Rachel Howlett</div>
-													</div>'>Rachel Howlett
-								</option>
-
-							</select>
-						</form> --}}
+                                            </div>'> {{$employee->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <button class="btn btn-blue btn-lg full-width">Create Course</button>
                         </form>
 					</div>

@@ -30,6 +30,8 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{asset('/plugins/adminlte/bower_components/select2/dist/css/select2.min.css')}}">
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
@@ -342,6 +344,9 @@
 <script src="{{asset('assets/')}}/js/libs/mediaelement-and-player.js"></script>
 <script src="{{asset('assets/')}}/js/libs/mediaelement-playlist-plugin.min.js"></script>
 <script src="{{asset('assets/')}}/js/libs/ion.rangeSlider.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
 <script src="{{asset('assets/')}}/js/main.js"></script>
 <script src="{{asset('assets/')}}/js/libs-init/libs-init.js"></script>

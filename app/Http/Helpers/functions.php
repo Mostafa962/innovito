@@ -58,4 +58,51 @@ if (! function_exists('coordinatorDefaultHeader')) {
     }
 }
 
+/** Rearrange all orders of any collection before add or update existing one */
+if (! function_exists('rearrangeOrders')) {
+    function rearrangeOrders($order, $object, $className)
+    {
+        $className = 'App\\Models\\' . $className;
+
+        if(empty($className::where('order', $order)->where('id', '<>', $object->id)->first())) return 0; // No Need to order.
+
+        /** Order has changed to lower value */
+        if($order < $object->order)
+        {
+            $objects = $className::where('id', '<>', $object->id)->orderBy('order')->get();
+
+            $current = 1;
+            foreach ($objects as $object) {
+                if($object->order == $order)
+                {
+                    $current++;
+                    $object->order = $current;
+                    $object->save();
+                    $order++;
+                }
+                else $current++;
+            }
+            return 1;
+        }
+        /** Order has changed to upper value */
+        else
+        {
+            $objects = $className::where('id', '<>', $object->id)->orderBy('order', 'DESC')->get();
+
+            foreach ($objects as $object) {
+                $current = $object->order;
+                if($object->order == $order)
+                {
+                    $current--;
+                    $object->order = $current;
+                    $object->save();
+                    $order--;
+                }
+            }
+            return 1;
+
+        }
+    }
+}
+
 ?>

@@ -58,4 +58,14 @@ class User extends Authenticatable
         return explode(" ",$this->name, 2)[1];
     }
 
+    public function courses()
+    {
+        return $this->hasMany('App\Models\Course');
+    }
+
+    public function enrolledCourses()
+    {
+        return $this->belongsToMany('App\Models\Course', 'course_user', 'user_id', 'course_id')->withTimestamps();
+    }
+
 }

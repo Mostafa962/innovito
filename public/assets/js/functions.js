@@ -68,3 +68,19 @@ function swalNormal(data)
     })
 
 }
+
+function confirmDelete(deleteAjaxFuction)
+{
+    Swal.fire({
+        title: 'Deletion!!',
+        text: 'Are You Sure ?',
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+    }).then(function(result) {
+        if (result.value) {
+            deleteAjaxFuction();
+        }
+    })
+
+}

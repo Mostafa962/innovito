@@ -102,13 +102,13 @@
 						</a>
 					</li>
 
-				<li>
+				{{-- <li>
 					<a href="16-FavPagesFeed.html">
 
 							<svg class="olymp-computer-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Manage Widgets"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
 							<span class="left-menu-title">Courses</span>
 					</a>
-				</li>
+				</li> --}}
 				<li>
 					<a href="20-CalendarAndEvents-MonthlyCalendar.html">
 						<svg class="olymp-calendar-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="CALENDAR AND EVENTS"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
@@ -158,7 +158,7 @@
 
 								<svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 
-								<span>My courses</span>
+								<span>My Courses</span>
 							</a>
 						</li>
 						<li>
@@ -252,13 +252,13 @@
 							</a>
 						</li>
 
-					<li>
+					{{-- <li>
 						<a href="16-FavPagesFeed.html">
 
 								<svg class="olymp-computer-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Manage Widgets"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
 								<span class="left-menu-title">Courses</span>
 						</a>
-					</li>
+					</li> --}}
 					<li>
 						<a href="20-CalendarAndEvents-MonthlyCalendar.html">
 							<svg class="olymp-calendar-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="CALENDAR AND EVENTS"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
@@ -309,7 +309,7 @@
 
 							<svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 
-							<span>My courses</span>
+							<span>My Courses</span>
 						</a>
 					</li>
 					<li>
