@@ -60,16 +60,16 @@ if (! function_exists('coordinatorDefaultHeader')) {
 
 /** Rearrange all orders of any collection before add or update existing one */
 if (! function_exists('rearrangeOrders')) {
-    function rearrangeOrders($order, $object, $className)
+    function rearrangeOrders($order, $object, $className, $parentName)
     {
         $className = 'App\\Models\\' . $className;
-
-        if(empty($className::where('order', $order)->where('id', '<>', $object->id)->first())) return 0; // No Need to order.
+        $parent_id = $parentName . '_id';
+        if(empty($className::where('order', $order)->where('id', '<>', $object->id)->where($parent_id, $object->$parent_id)->first())) return 0; // No Need to order.
 
         /** Order has changed to lower value */
         if($order < $object->order)
         {
-            $objects = $className::where('id', '<>', $object->id)->orderBy('order')->get();
+            $objects = $className::where('id', '<>', $object->id)->where($parent_id, $object->$parent_id)->orderBy('order')->get();
 
             $current = 1;
             foreach ($objects as $object) {
@@ -87,7 +87,7 @@ if (! function_exists('rearrangeOrders')) {
         /** Order has changed to upper value */
         else
         {
-            $objects = $className::where('id', '<>', $object->id)->orderBy('order', 'DESC')->get();
+            $objects = $className::where('id', '<>', $object->id)->where($parent_id, $object->$parent_id)->orderBy('order', 'DESC')->get();
 
             foreach ($objects as $object) {
                 $current = $object->order;

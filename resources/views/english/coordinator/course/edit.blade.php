@@ -65,7 +65,7 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
                     </li>
                     <li class="nav-item text-center" style="width:50%;">
-                        <a class="nav-link" id="stats-tab" data-toggle="tab" href="#stats" role="tab" aria-controls="stats" aria-selected="false">stats</a>
+                        <a class="nav-link" id="stats-tab" data-toggle="tab" href="#stats" role="tab" aria-controls="stats" aria-selected="false">Stats</a>
                     </li>
 
                 </ul>
@@ -221,48 +221,37 @@
 
 							</div>
 							<div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
-									<div class="ui-block">
-											<div class="ui-block-title">
-												<h6 class="title text-center">Enrolled learner</h6>
-											</div>
+                                <div class="ui-block">
+                                    <div class="ui-block-title">
+                                        <h6 class="title text-center">Enrolled Employees</h6>
+                                    </div>
 
-											<div class="ui-block-content cumm">
-												<div class="row">
-													<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-															<div class="table-responsive table-middle no-shadow">
-																	<table class="table">
-																		<thead>
-																		  <tr class="title-c">
-																			<th>name</th>
-
-																		  </tr>
-																		</thead>
-																		<tbody>
-																			<tr>
-																				<td>Name</td>
-
-																			</tr>
-																			<tr>
-																					<td>Name</td>
-
-																				</tr>
-																		</tbody>
-
-
-																	  </table>
-
-
-
-
-																   </div>
-													</div>
-												</div>
-											</div>
-
-							</div>
+                                    <div class="ui-block-content cumm">
+                                        <div class="row">
+                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="table-responsive table-middle no-shadow">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr class="title-c">
+                                                                <th>Employee Name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($course->users as $user)
+                                                                <tr>
+                                                                    <td>{{$user->name}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+							    </div>
 							</div>
 
-						  </div>
+                        </div>
 			</div>
 		</div>
 		<!-- Main Content -->
@@ -686,7 +675,6 @@
         $(document).on('submit', '.edit_lesson_form', function(event){
             event.preventDefault();
             var lesson_id = $( this ).data( "lesson-id" );
-            console.log(lesson_id);
             var url = '{{ route("en.coordinator.lessons.update", ":id") }}';
             url = url.replace(':id', lesson_id);
 
@@ -715,6 +703,7 @@
                     $('.course-curriculum').html(data.curriculum);
                     swalNormal(data.swal);
                     $(".overlay").toggleClass('hidden');
+                    location.reload();
                 },
                 error:function(data)
                 {

@@ -171,4 +171,18 @@ class CourseController extends Controller
             'route' => route('en.coordinator.courses.index')
         ]);
     }
+
+    public function filter(Request $request)
+    {
+        $category_id = $request->category_id;
+        if($category_id != "all")
+            $courses = Course::where('category_id', $category_id)->where('user_id', $request->user()->id)->orderBy('title', $request->order_type)->get();
+        else
+            $courses = Course::where('user_id', $request->user()->id)->orderBy('title', $request->order_type)->get();
+
+        return response()->json([
+            'courses' => view('english.coordinator.course.partials.course.courses_loops')->with('courses', $courses)->render()
+        ]);
+
+    }
 }

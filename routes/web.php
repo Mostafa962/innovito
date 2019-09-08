@@ -99,6 +99,7 @@ Route::group(['middleware' => ['checkAuth']], function ()
     {
         /** Courses */
         Route::resource('courses', 'CourseController');
+        Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
 
         /** Sections */
         Route::resource('sections', 'SectionController');

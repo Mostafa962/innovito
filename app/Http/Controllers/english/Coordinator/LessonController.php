@@ -106,7 +106,7 @@ class LessonController extends Controller
      */
     public function update(LessonUpdateRequest $request, Lesson $lesson)
     {
-        // rearrangeOrders($request->order, $lesson, 'Lesson');
+        rearrangeOrders($request->order, $lesson, 'Lesson', 'section');
 
         Lesson::find($lesson->id)->update($request->all());
 
