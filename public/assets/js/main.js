@@ -453,5 +453,35 @@ $.fn.togglepanels = function(){
 	});
   };
   $( "#create-lesson #tabs" ).tabs();
+  $( "#create-quiz #tabs" ).tabs();
   $("#accordion").togglepanels();
  
+
+
+// ================================================
+// ================================================
+// =====Duplicating and remove divs of quiz===================
+// ================================================
+// ================================================
+
+document.getElementById('addanswer').onclick = duplicate;
+
+
+var i = 0;
+var original = document.getElementById('answerspace');
+
+function duplicate() {
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "answerspace" + ++i; // there can only be one element with an ID
+    original.parentNode.appendChild(clone);
+}
+
+
+// ====remove=================
+document.getElementById('removeanswer').onclick = remove;
+
+function remove() {
+	var clone = original.cloneNode(true); // "deep" clone
+	clone.id = "answerspace" + ++i; // there can only be one element with an Id
+    original.remove(clone);
+}

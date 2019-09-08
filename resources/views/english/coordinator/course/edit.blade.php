@@ -13,7 +13,7 @@
 			<div class="ui-block">
 				<div class="top-header">
 					<div class="top-header-thumb">
-						<img src="{{asset('') . $course->image}}" alt="nature" style="height: 420px;">
+						<img src="{{asset('') . $course->image}}" alt="nature" style="">
 					</div>
 					<div class="profile-section">
 						<div class="row">
@@ -69,8 +69,9 @@
                     </li>
 
                 </ul>
-						  <div class="tab-content" id="myTabContent">
+						  <div class="tab-content pt" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="container ">
 								<div class="row">
 										<div class=" col col-md-4 col-sm-12" >
 												<div class="ui-block ">
@@ -143,6 +144,7 @@
 												</div>
 
 											</div>
+                                        </div>
                                 </div>
 
                                 <div class="ui-block-title">
@@ -195,12 +197,12 @@
 
                                                                 <div class="modal-body">
                                                                     <form method="post" class="edit_section_form" id="edit-section-form-{{$section->id}}" data-section-id="{{$section->id}}" enctype="multipart/form-data">
-                                                                        <div class="form-group label-floating">
+                                                                        <div class="form-group  ">
                                                                             <label class="control-label">Section title</label>
                                                                             <input class="form-control" placeholder="Section Title" type="text" value="{{$section->title}}" name="title" required>
                                                                         </div>
 
-                                                                        <div class="form-group label-floating is-focused">
+                                                                        <div class="form-group   is-focused">
                                                                             <label class="control-label">Sort Order</label>
                                                                             <input class="form-control" placeholder="Sort Order" type="number" value="{{$section->order}}" name="order" required>
                                                                         </div>
@@ -297,12 +299,12 @@
             <div class="modal-body">
                 <form method="post" id="create_section_form" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group label-floating">
+                    <div class="form-group  ">
                         <label class="control-label">Section title</label>
                         <input class="form-control" placeholder="Section Title" type="text" name="title" required>
                     </div>
 
-                    <div class="form-group label-floating is-focused">
+                    <div class="form-group   is-focused">
                         <label class="control-label">Sort Order</label>
                         <input class="form-control" placeholder="Sort Order" type="number" name="order" required>
                     </div>
@@ -318,7 +320,7 @@
 
 <!-- Window-popup Create  lesson -->
 <div class="modal fade" id="create-lesson" tabindex="-1" role="dialog" aria-labelledby="create-lesson" aria-hidden="true">
-    <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+    <div class="modal-dialog window-popup create-friend-group create-friend-group-1 " role="document">
         <div class="modal-content">
             <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
@@ -328,13 +330,49 @@
             </div>
 
             <div class="modal-body">
-                <div class="form-group label-floating is-focused">
+                <div class="form-group   is-focused">
                     <div id="tabs">
-                        <ul>
+                        <ul class="white">
                             @foreach ($lesson_types as $lesson_type)
                                 <li><a href="#tabs-{{$lesson_type->id}}">{{$lesson_type->title}}</a></li>
                             @endforeach
                         </ul>
+                        <div id="tabs-1">
+                                <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="lesson-type-id-1" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group  ">
+                                    <label class="control-label">Lesson Title</label>
+                                    <input class="form-control" placeholder="Lesson Title" name="title" type="text" required>
+                                </div>
+
+                                <div class="form-group  ">
+                                    <label class="control-label">Lesson Description</label>
+                                    <textarea class="form-control" placeholder="Lesson Description" name="description" type="text" required></textarea>
+                                </div>
+
+                                <div class="form-group  ">
+                                    <label class="control-label">Lesson Section</label>
+                                    <select class="form-control category-select" name="section_id" required>
+                                        @foreach ($course->sections as $section)
+                                            <option value="{{$section->id}}">{{$section->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group  ">
+                                    <label class="control-label">Lesson Order in Section</label>
+                                    <input class="form-control" placeholder="Lesson Order" type="number" name="order" min="1" required>
+                                </div>
+
+                                <div class="form-group  ">
+                                    <label class="control-label">Lesson Score When finished</label>
+                                    <input class="form-control" placeholder="Lesson Score" type="number" value="0" name="score" required>
+                                </div>
+
+                                <button class="btn btn-blue btn-lg full-width">Create Lesson</button>
+                                </form>
+                                </div>
 
                         @include('english.coordinator.course.partials.lessons.text_form')
                         @include('english.coordinator.course.partials.lessons.image_form')
@@ -365,14 +403,81 @@
 					</div>
 
 					<div class="modal-body">
-						<form class="form-group label-floating">
-							<label class="control-label">add Quistion</label>
-							<input class="form-control" placeholder=""  type="text">
-						</form>
-						<a href="#" class="btn  btn-secondary btn-lg full-width">add another</a>
+              
+                    <div id="tabs">
+                        <ul class="white">
+                           
+                                <li><a href="#tabs-1">Main</a></li>
+                                <li><a href="#tabs-2">Quistions</a></li>
+                         
+                        </ul>
+                        <div id="tabs-1">
+                                <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="" enctype="">
+                                    @csrf
+
+                                    <div class="form-group ">
+                                        <label class="control-label">quiz Title</label>
+                                        <input class="form-control" placeholder=" Title" name="title" type="text" required>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label class="control-label">quiz Description</label>
+                                        <textarea class="form-control" placeholder=" Description" name="description" type="text" required></textarea>
+                                    </div>
+
+                                    <div class="form-group  ">
+                                        <label class="control-label">quiz Section</label>
+                                        <select class="form-control category-select" name="section_id" required>
+                                            @foreach ($course->sections as $section)
+                                                <option value="{{$section->id}}">{{$section->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group  ">
+                                        <label class="control-label">quiz Order in Section</label>
+                                        <input class="form-control" placeholder="quiz Order" type="number" name="order" min="1" required>
+                                    </div>
+
+                                    <div class="form-group  ">
+                                        <label class="control-label">Duration</label>
+                                        <input class="form-control" placeholder="Duration" type="number" value="0" name="Duration" required>
+                                    </div>
+                                </form>
+                           
+                           
+                         
+                        </div>
+                        <div id="tabs-2">
+                             
+                            <div class="form-group   is-focused Question">
+                                <label class="control-label">add Question</label>
+                                <input class="form-control" placeholder="" type="text" name="text" required>
+                                
+                                <div id="answerspace"  class="form-group label-floating  is-focused answer">
+                                    <label class="control-label">add answer</label>
+                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required> 
+                                    <a id="removeanswer" href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                    </a>
+                                </div>
+                                <a id="addanswer" href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                    <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                </a>
+                            </div>
+                            <a href="#" class="btn  btn-secondary btn-lg full-width">add another</a>
+                        </div>
+
+                    
+
+                    </div>
+                
+                  
+					
+					
 
 
-						<a href="#" class="btn btn-blue btn-lg full-width">Create lesson</a>
+						<a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
 					</div>
 				</div>
 			</div>
