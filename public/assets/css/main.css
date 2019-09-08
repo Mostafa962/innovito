@@ -16202,8 +16202,86 @@ margin-bottom:30px;
 .table{
   border-radius: 4px !important;
 }
+/* ============================== */
+/* to make images centered  */
+/* ============================== */ 
+.author-thumb img{
+  max-height: 100%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.top-header-thumb{
+  height: 300px;
+  overflow: hidden;
+}
+.top-header-thumb img{
+  height: 100%;
+  max-width: none !important;
+  width: auto !important;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+/* ============================== */
 #timer{
   font-size: 50px;
   color: #000;
   font-weight: 900;
+}
+.pt{
+  padding-top: 24px;
+}
+span.select2-selection{
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 1.1rem !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5!important;
+    color: #495057!important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #e6ecf5 !important;
+    border-radius: .25rem !important;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+}
+.select2-selection__arrow {
+  height: 100% !important;
+}
+.select2-selection__rendered{
+  padding-left:0 !important; 
+}
+.more-width{
+  width: 575px ;
+}
+#tabs ul.white{
+  background: #fff ;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+#tabs ul.white li{
+  margin: 0 !important;
+}
+#tabs ul.white li a{
+  padding: 8px 5px !important;
+}
+#create-quiz div.answer{
+    width: 85%;
+    margin: 15px 0 10px auto;
+}
+#create-quiz .addanswer{
+  background: #fff;
+  position: absolute;
+  bottom: -15px;
+  left: 7px;
+  z-index: 2;
+}
+#create-quiz .removeanswer{
+  position: absolute;
+  top: 15px;
+  left: -51px;
+  z-index: 1;
+}
+#create-quiz .removeanswer:last-child{
+ display: none;
 }

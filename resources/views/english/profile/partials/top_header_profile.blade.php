@@ -50,7 +50,7 @@
                     </div>
                     <div class="top-header-author">
                         <a href="#" class="author-thumb">
-                            <img id="top-header-profile-picture" src="{{asset('') . Auth::user()->image}}" alt="author">
+                            <img id="top-header-profile-picture " src="{{asset('') . Auth::user()->image}}" alt="author">
                         </a>
                         <div class="author-content">
                             <a href="#" class="h4 author-name">{{Auth::user()->name}}</a>
