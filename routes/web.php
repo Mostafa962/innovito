@@ -94,7 +94,6 @@ Route::group(['middleware' => ['checkAuth']], function ()
 
     /**** Coordinator Part */
 
-
     Route::group(['prefix' => 'en/coordinator', 'middleware' => ['CheckCoordinator'], 'as' => 'en.coordinator.', 'namespace' => 'english\Coordinator'], function ()
     {
         /** Courses */
@@ -107,4 +106,20 @@ Route::group(['middleware' => ['checkAuth']], function ()
         /** Lessons */
         Route::resource('lessons', 'LessonController');
     });
+
+    /**** Employee Part */
+
+    Route::group(['prefix' => 'en/employee', 'middleware' => ['CheckEmployee'], 'as' => 'en.employee.', 'namespace' => 'english\Employee'], function ()
+    {
+        /** Courses */
+        Route::resource('courses', 'CourseController');
+        // Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
+
+        // /** Sections */
+        // Route::resource('sections', 'SectionController');
+
+        // /** Lessons */
+        // Route::resource('lessons', 'LessonController');
+    });
+
 });
