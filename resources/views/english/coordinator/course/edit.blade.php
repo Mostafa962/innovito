@@ -392,13 +392,13 @@
 					</div>
 
 					<div class="modal-body">
-              
+
                     <div id="tabs">
                         <ul class="white">
-                           
+
                                 <li><a href="#tabs-1">Main</a></li>
                                 <li><a href="#tabs-2">Quistions</a></li>
-                         
+
                         </ul>
                         <div id="tabs-1">
                                 <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="" enctype="">
@@ -433,19 +433,19 @@
                                         <input class="form-control" placeholder="Duration" type="number" value="0" name="Duration" required>
                                     </div>
                                 </form>
-                           
-                           
-                         
+
+
+
                         </div>
                         <div id="tabs-2">
-                             
+
                             <div class="form-group   is-focused Question">
                                 <label class="control-label">add Question</label>
                                 <input class="form-control" placeholder="" type="text" name="text" required>
-                                
+
                                 <div id="answerspace"  class="form-group label-floating  is-focused answer">
                                     <label class="control-label">add answer</label>
-                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required> 
+                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required>
                                     <a id="removeanswer" href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
                                         <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                     </a>
@@ -457,13 +457,13 @@
                             <a href="#" class="btn  btn-secondary btn-lg full-width">add another</a>
                         </div>
 
-                    
+
 
                     </div>
-                
-                  
-					
-					
+
+
+
+
 
 
 						<a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
@@ -691,7 +691,7 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('hidden ');
                 },
                 success:function(data)
                 {
