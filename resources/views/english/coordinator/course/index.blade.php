@@ -30,38 +30,29 @@ My Courses
 <!-- Main Content Groups -->
 
 <div class="container">
-	<div class="row">
-		{{-- <div class="col-12 ">
+	<div class="row page-container">
+		<div class="col-12 ">
 			<div class="filters row">
 				<form action="#">
-						<fieldset>
-							<label>category:</label>
-							<select name="speed">
-                                <option>Slower</option>
-                                <option>Slow</option>
-                                <option selected="selected">Medium</option>
-                                <option>Fast</option>
-                                <option>Faster</option>
-							</select>
-						</fieldset>
-						<fieldset>
-							<label>Sort by:</label>
-							<select name="speed">
-								<option>Slower</option>
-								<option>Slow</option>
-								<option selected="selected">Medium</option>
-								<option>Fast</option>
-								<option>Faster</option>
-							</select>
-						</fieldset>
-
-					</form>
+                    <fieldset>
+                        <label>Category:</label>
+                        <select class="category-select" name="category_filter">
+                            <option value="all">All</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Sort by:</label>
+                        <select class="category-select" name="sort_filter">
+                            <option value = "ASC">A -> Z</option>
+                            <option value = "DESC">Z -> A</option>
+                        </select>
+                    </fieldset>
+                </form>
 			</div>
-
-
-
-
-		</div> --}}
+		</div>
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 
             <!-- Course Item -->
@@ -77,7 +68,6 @@ My Courses
 
                     <div class="author-content">
                         <a href="#" class="h5 author-name">Add Course</a>
-
                     </div>
 
                 </div>
@@ -88,7 +78,7 @@ My Courses
         </div>
 
         @foreach (Auth::user()->courses as $course)
-            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 course-container">
                 <div class="ui-block" data-mh="friend-groups-item">
                     <!-- Friend Item -->
                     <div class="friend-item friend-groups">
@@ -111,7 +101,6 @@ My Courses
                 </div>
             </div>
         @endforeach
-
 	</div>
 </div>
 
@@ -222,6 +211,8 @@ My Courses
 <script>
     $(document).ready(function() {
         $('.category-select').select2();
+
+        /*** Create Course */
         $('#add_course_form').on('submit', function(event){
             event.preventDefault();
             var formData = new FormData(document.querySelector('#add_course_form'));
@@ -247,7 +238,30 @@ My Courses
                 }
             })
         });
+        /*** Create Course */
 
+        /*** Filter Courses */
+        $(' .page-container ').on('change', 'select[name="category_filter"], select[name="sort_filter"]', function () {
+            var category_id = $('select[name="category_filter"]').val();
+            var order_type  = $('select[name="sort_filter"]').val();
+            $.ajax({
+                url:"{{ route('en.coordinator.courses.filter') }}",
+                method:"POST",
+                data:{'category_id': category_id, 'order_type': order_type},
+                dataType:'JSON',
+                beforeSend: function(){
+                    $(".overlay").toggleClass('hidden');
+                },
+                success:function(data)
+                {
+                    $( '.course-container' ).hide(); //***** Need FIX ******//
+                    $(' .page-container ').append(data.courses);
+                    $(".overlay").toggleClass('hidden');
+                },
+            })
+
+        });
+        /*** Filter Courses */
     });
 </script>
 @endsection

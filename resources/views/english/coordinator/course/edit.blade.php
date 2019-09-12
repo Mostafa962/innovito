@@ -71,6 +71,7 @@
                         <a class="nav-link" id="leaderboard-tab" data-toggle="tab" href="#leaderboard" role="tab" aria-controls="leaderboard" aria-selected="false">Leaderboard</a>
                     </li>
 
+
                 </ul>
 						  <div class="tab-content pt" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -227,45 +228,34 @@
                                 </div>
 
 							</div>
-                        <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
-									<div class="ui-block">
-											<div class="ui-block-title">
-												<h6 class="title text-center">Enrolled learner</h6>
-											</div>
+                            <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+                                <div class="ui-block">
+                                    <div class="ui-block-title">
+                                        <h6 class="title text-center">Enrolled Employees</h6>
+                                    </div>
 
-											<div class="ui-block-content cumm">
-												<div class="row">
-													<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-															<div class="table-responsive table-middle no-shadow">
-																	<table class="table">
-																		<thead>
-																		  <tr class="title-c">
-																			<th>name</th>
-
-																		  </tr>
-																		</thead>
-																		<tbody>
-																			<tr>
-																				<td>Name</td>
-
-																			</tr>
-																			<tr>
-																					<td>Name</td>
-
-																				</tr>
-																		</tbody>
-
-
-                                                                      </table>
-                                                                    
-                                                                        <!---------------- loader' ------------------------>
-
-
-                                                        </div>
-													</div>
-												</div>
-											</div>
-
+                                    <div class="ui-block-content cumm">
+                                        <div class="row">
+                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="table-responsive table-middle no-shadow">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr class="title-c">
+                                                                <th>Employee Name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($course->users as $user)
+                                                                <tr>
+                                                                    <td>{{$user->name}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 							    </div>
 							</div>
 
@@ -336,8 +326,7 @@
 												</div>
 											</div>
 
-							    </div>
-							</div>
+						
 
                         </div>
 			</div>
@@ -478,13 +467,13 @@
 					</div>
 
 					<div class="modal-body">
-              
+
                     <div id="tabs">
                         <ul class="white">
-                           
+
                                 <li><a href="#tabs-1">Main</a></li>
                                 <li><a href="#tabs-2">Quistions</a></li>
-                         
+
                         </ul>
                         <div id="tabs-1">
                                 <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="" enctype="">
@@ -519,11 +508,12 @@
                                         <input class="form-control" placeholder="Duration" type="number" value="0" name="Duration" required>
                                     </div>
                                 </form>
-                           
-                           
-                         
+
+
+
                         </div>
                         <div id="tabs-2">
+<<<<<<< HEAD
                             <div id="cont">
                                 <div id="Question" class="form-group   is-focused Question">
                                     <label class="control-label">add Question</label>
@@ -538,19 +528,31 @@
                                     </div>
                                     <a id="addanswer" href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
                                         <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+=======
+
+                            <div class="form-group   is-focused Question">
+                                <label class="control-label">add Question</label>
+                                <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                <div id="answerspace"  class="form-group label-floating  is-focused answer">
+                                    <label class="control-label">add answer</label>
+                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                    <a id="removeanswer" href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+>>>>>>> c8a00fbf712c9079d251569a8f0721ad0e149882
                                     </a>
                                 </div>
                             </div>
                             <a  class="btn  btn-secondary btn-lg full-width addquest" >add another</a>
                         </div>
 
-                    
+
 
                     </div>
-                
-                  
-					
-					
+
+
+
+
 
 
 						<a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
@@ -867,7 +869,6 @@
         $(document).on('submit', '.edit_lesson_form', function(event){
             event.preventDefault();
             var lesson_id = $( this ).data( "lesson-id" );
-            console.log(lesson_id);
             var url = '{{ route("en.coordinator.lessons.update", ":id") }}';
             url = url.replace(':id', lesson_id);
 
@@ -896,6 +897,7 @@
                     $('.course-curriculum').html(data.curriculum);
                     swalNormal(data.swal);
                     $(".overlay").toggleClass('hidden');
+                    location.reload();
                 },
                 error:function(data)
                 {

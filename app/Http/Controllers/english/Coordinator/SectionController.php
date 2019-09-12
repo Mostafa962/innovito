@@ -83,7 +83,7 @@ class SectionController extends Controller
      */
     public function update(SectionUpdateRequest $request, Section $section)
     {
-        rearrangeOrders($request->order, $section, 'Section');
+        rearrangeOrders($request->order, $section, 'Section', 'course');
 
         Section::find($section->id)->update($request->all());
         return response()->json([
