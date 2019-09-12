@@ -48,7 +48,7 @@
 
 <!-- Preloader -->
 
-<div id="hellopreloader">
+<div id="hellopreloader" >
 	<div class="preloader">
 		<svg width="45" height="45" stroke="#fff">
 			<g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">

@@ -464,24 +464,35 @@ $.fn.togglepanels = function(){
 // ================================================
 // ================================================
 
-document.getElementById('addanswer').onclick = duplicate;
+// document.getElementById('addanswer').onclick = duplicate;
 
 
-var i = 0;
-var original = document.getElementById('answerspace');
+// var i = 0;
+// var original = document.getElementById('answerspace');
 
-function duplicate() {
-    var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "answerspace" + ++i; // there can only be one element with an ID
-    original.parentNode.appendChild(clone);
-}
+// function duplicate() {
+//     var clone = original.cloneNode(true); // "deep" clone
+//     clone.id = "answerspace" + ++i; // there can only be one element with an ID
+//     original.parentNode.appendChild(clone);
+// }
 
+
+$(".addquest").click(function(){
+	$("#Question").clone().appendTo("#cont");
+	$('.answerspace').not('#answerspace:last-child').remove();
+
+});
+
+  $("#addanswer").click(function(){
+	$("#answerspace").clone().appendTo("#Question");
+	// $('.answerspace').not('.answerspace:last-child');
+  });
 
 // ====remove=================
-document.getElementById('removeanswer').onclick = remove;
+// document.getElementById('removeanswer').onclick = remove;
 
-function remove() {
-	var clone = original.cloneNode(true); // "deep" clone
-	clone.id = "answerspace" + ++i; // there can only be one element with an Id
-    original.remove(clone);
-}
+// function remove() {
+// 	var clone = original.cloneNode(true); // "deep" clone
+// 	clone.id = "answerspace" + ++i; // there can only be one element with an Id
+//     original.remove(clone);
+// }

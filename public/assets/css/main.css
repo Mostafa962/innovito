@@ -1819,10 +1819,12 @@ section {
   width: 100%;
   height: 100%;
   min-width: 100%;
-  background: #001016;
+  background: rgba(0, 16, 22, 0.5);
   background-size: 41px;
   opacity: 1; }
-
+  #hellopreloader.overlay{
+    position: absolute !important;
+  }
 .preloader {
   position: absolute;
   top: 50%;
@@ -16079,6 +16081,9 @@ div.mejs-speed-button {
   color:#fff;
   padding-left:5px;
  
+}
+.gridy tr:nth-of-type(even) {
+  background: #F3F3F3;
 }
 .block-list__label a{
   color:#515365;
