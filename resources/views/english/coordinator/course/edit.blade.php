@@ -691,7 +691,7 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden ');
+                    $(".overlay").toggleClass('hidden');
                 },
                 success:function(data)
                 {
