@@ -8,7 +8,7 @@
                 <ul class="widget w-personal-info item-block">
                     <li>
                         <span class="title" >{{$lesson->title}}</span>
-                        <a href="{{$lesson->content->localvideo_link}}">{{$lesson->content->video_filename}}</a>
+                        <a href="{{asset('') . $lesson->content->localvideo_link}}" target="_blank">{{$lesson->content->video_filename}}</a>
                     </li>
                 </ul>
             </div>
