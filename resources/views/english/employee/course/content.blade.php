@@ -17,8 +17,11 @@
                         <div>
                             <ul class="lessons">
                                 @foreach ($section->lessons as $lesson)
-                                    <a class="lesson-id" data-lesson-id="{{$lesson->id}}"><li>{{$lesson->title}}</li></a>
+                                    <!-- <a class="lesson-id" data-lesson-id="{{$lesson->id}}"><li>{{$lesson->title}}</li></a> -->
                                 @endforeach
+                                <a class="lesson-id locked" data-lesson-id="{{$lesson->id}}"><li><i class="fas fa-lock"></i>locked</li></a>
+                                <a class="lesson-id now" data-lesson-id="{{$lesson->id}}"><li><i class="fas fa-play-circle"></i>watching</li></a>
+                                <a class="lesson-id done" data-lesson-id="{{$lesson->id}}"><li><i class="fas fa-check-circle"></i>watched</li></a>
                             </ul>
                         </div>
                     @endforeach
@@ -28,6 +31,14 @@
 
         <div class="col-lg-8 col-md-12  order-lg-1 order-md-12 header-h lesson-content">
             {!! $lesson_text !!}
+            <div class="lesson-footer ">
+                <button class="btn btn-primary btn-md-2 navsh "><i class="fas fa-arrow-left"></i> prev</button>
+
+                <button class="btn btn-primary btn-md-2"><i class="fas fa-check-circle"></i> done</button>
+
+                <button class="btn btn-primary btn-md-2 navsh nomore">next <i class="fas fa-arrow-right"></i></button>
+            </div>
+           
         </div>
 
         @include('english.layouts.partials.overlay')

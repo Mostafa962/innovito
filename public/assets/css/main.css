@@ -16099,8 +16099,12 @@ div.mejs-speed-button {
 .ui-accordion-header span{
   color:rgb(255, 255, 255);
 }
+.ui-accordion .ui-accordion-content{
+  padding: 1em ;
+}
 .lessons{
-  list-style-type:disc;
+  list-style-type: none;
+  padding-left:15px;
 }
 .lessons a{
   cursor: pointer;
@@ -16289,4 +16293,42 @@ span.select2-selection{
 }
 #create-quiz .removeanswer:last-child{
  display: none;
+}
+
+
+
+
+
+/* =============lesson cases =================*/
+
+.locked{
+  pointer-events: none;
+  color: #9a9fbf !important;
+}
+.now{
+  color: #007aff !important;
+}
+
+.lesson-id svg{
+  margin-right:5px;
+}
+
+
+
+.lesson-footer{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1px ;
+}
+
+.lesson-footer .navsh{
+  width: 120px;
+}
+.lesson-footer .navsh:hover{
+  background: #38a9ff;
+}
+.lesson-footer .nomore{
+  pointer-events: none;
+  background: #9a9fbf !important;
+  border: 0;
 }
