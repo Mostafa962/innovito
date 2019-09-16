@@ -143,7 +143,7 @@ if the page has a “right panel”, add a class for BODY -- ".page-has-right-pa
      }
 
 .header {
-  padding-left: 270px; 
+  padding-left: 270px;
   height: 70px;
   background-color: #3f4257;
   position: fixed;
@@ -156,7 +156,7 @@ if the page has a “right panel”, add a class for BODY -- ".page-has-right-pa
     text-transform: uppercase;
     float: left;
     height: 100%;
-   
+
   }
     .header .page-title > * {
       color: #fff;
@@ -168,7 +168,7 @@ if the page has a “right panel”, add a class for BODY -- ".page-has-right-pa
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding-right: 0; 
+    padding-right: 0;
   }
     .header.header--logout .page-title {
       padding: 26px; }
@@ -959,7 +959,7 @@ if the page has a “right panel”, add a class for BODY -- ".page-has-right-pa
             animation: sidedownscroll 30s linear infinite;
     background-size: auto; }
     .landing-page .content-bg-wrap:before {
-      
+
       background-color: rgba(0, 16, 22, 0.95); }
 
 @-webkit-keyframes sidedownscroll {
@@ -1823,7 +1823,7 @@ section {
   background-size: 41px;
   opacity: 1; }
   #hellopreloader.overlay{
-    position: absolute !important;
+    position: fixed !important;
   }
 .preloader {
   position: absolute;
@@ -1935,7 +1935,7 @@ section {
     border: none; }
 
 .mobile-app .olympus-chat {
-  
+
   position: relative;
   display: block; }
 
@@ -2768,7 +2768,7 @@ img {
   border-radius: 5px;
   border: 1px solid #e6ecf5;
   margin-bottom: 15px;
- 
+
  }
   .ui-block .ui-block-title:last-child {
     border-bottom: 0; }
@@ -3197,7 +3197,7 @@ button:hover {
   transition: all 0.2s ease-in-out;
   background-color: #38a9ff ;
   color : #fff;
-  fill : #fff; 
+  fill : #fff;
 }
 .notification-icon .accept-request:nth-child(1){
   fill: #fff;
@@ -3208,7 +3208,7 @@ button:hover {
     color:#38a9ff;
   }
   .accept-request:hover, .accept-request:focus {
-   
+
     fill: #08ddc1;
     color:#08ddc1 !important;
     opacity: .9; }
@@ -3953,7 +3953,7 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
     height: 70px;
     background-color: #38a9ff;
     padding: 15px; }
-  
+
     .fixed-sidebar .ui-block-title:first-child {
       margin-top: 0; }
   .fixed-sidebar .search-friend svg {
@@ -4933,7 +4933,7 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
 /*================= Responsive Mode ============*/
 @media (max-width: 1023px) {
   .registration-login-form {
-    
+
     padding-left: 0; }
   .registration-login-form .nav-tabs {
     bottom: auto;
@@ -5674,10 +5674,10 @@ body {
 
 .update-header-photo {
   width: 470px;
-  
+
 }
   .update-header-photo .modal-body {
-    padding: 0; 
+    padding: 0;
     display:flex;
     justify-content: center;}
     .update-header-photo .modal-body  a{
@@ -10143,7 +10143,7 @@ ol ol li {
 
   .bg-linked  {
     background-color: #0077B5 ; }
-  
+
 .bg-dribbble {
   background-color: #f74881; }
 
@@ -15394,15 +15394,15 @@ div.mejs-speed-button {
 /**
  * Swiper 3.3.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
- * 
+ *
  * http://www.idangero.us/swiper/
- * 
+ *
  * Copyright 2016, Vladimir Kharlampidi
  * The iDangero.us
  * http://www.idangero.us/
- * 
+ *
  * Licensed under MIT
- * 
+ *
  * Released on: February 7, 2016
  */
 .swiper-container {
@@ -15996,7 +15996,7 @@ div.mejs-speed-button {
   filter: grayscale(1);
   transition: .5s all ;
  }
- 
+
  .margin-top{
    margin-top:40px;
  }
@@ -16022,7 +16022,7 @@ div.mejs-speed-button {
   vertical-align: top;
   width: 46%;
   position: relative;
- 
+
 }
 .block-list .fa,.far,.fas {
   position: absolute;
@@ -16033,7 +16033,7 @@ div.mejs-speed-button {
     display: inline-block;
     vertical-align: top;
     width: 52%;}
-    
+
     .cert{
       position: relative;
       width:100%;
@@ -16045,7 +16045,7 @@ div.mejs-speed-button {
       width:100%;
       top:0;
       left:0;
-      
+
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex;
@@ -16080,7 +16080,7 @@ div.mejs-speed-button {
   font-size: 15px;
   color:#fff;
   padding-left:5px;
- 
+
 }
 .gridy tr:nth-of-type(even) {
   background: #F3F3F3;
@@ -16171,7 +16171,7 @@ margin-bottom:30px;
 .answers p{
   font-size:16px ;
  font-weight: 500;
- 
+
 }
 .Question{
   font-size:20px ;
@@ -16179,7 +16179,7 @@ margin-bottom:30px;
  color: #888DA8;
 }
 .Question:hover{
- text-decoration: underline; 
+ text-decoration: underline;
 }
 .top-header-author.course-name{
   bottom:30px;
@@ -16209,7 +16209,7 @@ margin-bottom:30px;
 }
 /* ============================== */
 /* to make images centered  */
-/* ============================== */ 
+/* ============================== */
 .author-thumb img{
   max-height: 100%;
   margin-left: 50%;
@@ -16254,7 +16254,7 @@ span.select2-selection{
   height: 100% !important;
 }
 .select2-selection__rendered{
-  padding-left:0 !important; 
+  padding-left:0 !important;
 }
 .more-width{
   width: 575px ;

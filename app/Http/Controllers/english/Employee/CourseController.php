@@ -5,6 +5,8 @@ namespace App\Http\Controllers\english\Employee;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Auth;
 
 class CourseController extends Controller
 {
@@ -15,7 +17,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('english.employee.course.index')
+        ->with('categories', $categories);
     }
 
     /**
@@ -47,7 +51,8 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('english.employee.course.show')
+        ->with('course', $course);
     }
 
     /**
@@ -82,5 +87,29 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+    }
+
+    public function filter(Request $request)
+    {
+        $category_id = $request->category_id;
+        if($category_id != "all")
+            $courses = Auth::user()->enrolledCourses()->where('category_id', $category_id)->orderBy('title', $request->order_type)->get();
+        else
+            $courses = Auth::user()->enrolledCourses()->orderBy('title', $request->order_type)->get();
+
+        return response()->json([
+            'courses' => view('english.employee.course.partials.course.courses_loops')->with('courses', $courses)->render()
+        ]);
+
+    }
+
+    public function content(Course $course)
+    {
+        $lesson = $course->sections()->first()->lessons()->first();
+
+        return view('english.employee.course.content')
+        ->with('course', $course)
+        ->with('lesson_text', $lesson->getLessonView());
+
     }
 }

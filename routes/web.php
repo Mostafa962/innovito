@@ -113,13 +113,15 @@ Route::group(['middleware' => ['checkAuth']], function ()
     {
         /** Courses */
         Route::resource('courses', 'CourseController');
-        // Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
+        Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
+        Route::get('courses/{course}/content', 'CourseController@content')->name('courses.content');
 
         // /** Sections */
         // Route::resource('sections', 'SectionController');
 
-        // /** Lessons */
-        // Route::resource('lessons', 'LessonController');
+        /** Lessons */
+        Route::resource('lessons', 'LessonController');
+        Route::post('lessons/filter', 'LessonController@filter')->name('lessons.filter');
     });
 
 });

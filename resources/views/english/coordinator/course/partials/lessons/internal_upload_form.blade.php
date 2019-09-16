@@ -43,4 +43,6 @@
 
         <button class="btn btn-blue btn-lg full-width">Create Lesson</button>
     </form>
+
+    @include('english.layouts.partials.overlay')
 </div>

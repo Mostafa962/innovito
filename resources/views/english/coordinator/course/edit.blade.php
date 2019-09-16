@@ -81,24 +81,24 @@
 												<div class="ui-block ">
 													<!-- W-Action -->
 													<a href="">
-													<div class="widget catco" style="background-image: url('{{asset('assets')}}/img/bg-wethear.jpg');">
+                                                        <div class="widget catco" style="background-image: url('{{asset('assets')}}/img/bg-wethear.jpg');">
 
-														<div class="content">
+                                                            <div class="content">
 
-																<a href="#" class="btn btn-control" data-toggle="modal" data-target="#create-section">
-																	<svg class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
-																</a>
+                                                                <a href="#" class="btn btn-control" data-toggle="modal" data-target="#create-section">
+                                                                    <svg class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                                                </a>
 
-																<div class="author-content">
-																	<a href="#" class="h5 author-name color-white" data-toggle="modal" data-target="#create-section">Add Sections</a>
-																</div>
+                                                                <div class="author-content">
+                                                                    <a href="#" class="h5 author-name color-white" data-toggle="modal" data-target="#create-section">Add Sections</a>
+                                                                </div>
 
-															</div>
-													</div>
-												</a>
+                                                            </div>
+                                                        </div>
+												    </a>
 													<!-- ... end W-Action -->
                                                 </div>
-                                                
+
 
 
 											</div>
@@ -259,10 +259,10 @@
 							    </div>
 							</div>
 
-                        
+
                         <div class="tab-pane fade" id="leaderboard" role="tabpanel" aria-labelledby="leaderboard-tab">
 									<div class="ui-block">
-										
+
 
 											<div class="ui-block-content cumm">
 												<div class="row">
@@ -292,30 +292,6 @@
                                                                             </tr>
 																		</tbody>
 
-                                                                        <div id="hellopreloader" class="overlay">
-                                                                        <div class="preloader">
-                                                                            <svg width="45" height="45" stroke="#fff">
-                                                                                <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
-                                                                                    <circle cx="22" cy="22" r="6" stroke="none">
-                                                                                        <animate attributeName="r" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
-                                                                                        <animate attributeName="stroke-opacity" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
-                                                                                        <animate attributeName="stroke-width" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
-                                                                                    </circle>
-                                                                                    <circle cx="22" cy="22" r="6" stroke="none">
-                                                                                        <animate attributeName="r" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
-                                                                                        <animate attributeName="stroke-opacity" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
-                                                                                        <animate attributeName="stroke-width" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
-                                                                                    </circle>
-                                                                                    <circle cx="22" cy="22" r="8">
-                                                                                        <animate attributeName="r" begin="0s" calcMode="linear" dur="1.5s" repeatCount="indefinite" values="6;1;2;3;4;5;6"/>
-                                                                                    </circle>
-                                                                                </g>
-                                                                            </svg>
-
-                                                                            <div class="text">Loading ...</div>
-                                                                        </div>
-                                                                       </div>
-                                                                <!---------------- /loader' ------------------>
 																	  </table>
 
 
@@ -326,7 +302,7 @@
 												</div>
 											</div>
 
-						
+
 
                         </div>
 			</div>
@@ -375,6 +351,9 @@
                     <button class="btn btn-blue btn-lg full-width">Create section</button>
                 </form>
             </div>
+
+            @include('english.layouts.partials.overlay')
+
         </div>
     </div>
 </div>
@@ -401,42 +380,6 @@
                                 <li><a href="#tabs-{{$lesson_type->id}}">{{$lesson_type->title}}</a></li>
                             @endforeach
                         </ul>
-                        <div id="tabs-1">
-                                <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="lesson-type-id-1" enctype="multipart/form-data">
-                                @csrf
-
-                                <div class="form-group  ">
-                                    <label class="control-label">Lesson Title</label>
-                                    <input class="form-control" placeholder="Lesson Title" name="title" type="text" required>
-                                </div>
-
-                                <div class="form-group  ">
-                                    <label class="control-label">Lesson Description</label>
-                                    <textarea class="form-control" placeholder="Lesson Description" name="description" type="text" required></textarea>
-                                </div>
-
-                                <div class="form-group  ">
-                                    <label class="control-label">Lesson Section</label>
-                                    <select class="form-control category-select" name="section_id" required>
-                                        @foreach ($course->sections as $section)
-                                            <option value="{{$section->id}}">{{$section->title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group  ">
-                                    <label class="control-label">Lesson Order in Section</label>
-                                    <input class="form-control" placeholder="Lesson Order" type="number" name="order" min="1" required>
-                                </div>
-
-                                <div class="form-group  ">
-                                    <label class="control-label">Lesson Score When finished</label>
-                                    <input class="form-control" placeholder="Lesson Score" type="number" value="0" name="score" required>
-                                </div>
-
-                                <button class="btn btn-blue btn-lg full-width">Create Lesson</button>
-                                </form>
-                                </div>
 
                         @include('english.coordinator.course.partials.lessons.text_form')
                         @include('english.coordinator.course.partials.lessons.image_form')
@@ -513,41 +456,25 @@
 
                         </div>
                         <div id="tabs-2">
-<<<<<<< HEAD
                             <div id="cont">
                                 <div id="Question" class="form-group   is-focused Question">
                                     <label class="control-label">add Question</label>
                                     <input class="form-control" placeholder="" type="text" name="text" required>
-                                    
+
                                     <div id="answerspace"  class="form-group label-floating  is-focused answer">
                                         <label class="control-label">add answer</label>
-                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required> 
+                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
                                         <a id="removeanswer" href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
                                     </div>
                                     <a id="addanswer" href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
                                         <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
-=======
-
-                            <div class="form-group   is-focused Question">
-                                <label class="control-label">add Question</label>
-                                <input class="form-control" placeholder="" type="text" name="text" required>
-
-                                <div id="answerspace"  class="form-group label-floating  is-focused answer">
-                                    <label class="control-label">add answer</label>
-                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required>
-                                    <a id="removeanswer" href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
-                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
->>>>>>> c8a00fbf712c9079d251569a8f0721ad0e149882
                                     </a>
                                 </div>
                             </div>
                             <a  class="btn  btn-secondary btn-lg full-width addquest" >add another</a>
                         </div>
-
-
-
                     </div>
 
 
@@ -555,10 +482,10 @@
 
 
 
-						<a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
-					</div>
-				</div>
-			</div>
+                    <a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
+                </div>
+            </div>
+        </div>
 	</div>
 
 	<!-- Window-popup Create  quiz -->
@@ -662,12 +589,12 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 success:function(data)
                 {
                     swalNormal(data.swal);
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                     window.location.replace(data.route);
                 },
                 error:function(data)
@@ -688,12 +615,12 @@
                     data:{'_method' : 'DELETE'},
                     dataType:'JSON',
                     beforeSend: function(){
-                        $(".overlay").toggleClass('hidden');
+                        $(".overlay").toggleClass('d-none');
                     },
                     success:function(data)
                     {
                         swalNormal(data.swal);
-                        $(".overlay").toggleClass('hidden');
+                        $(".overlay").toggleClass('d-none');
                         window.location.replace(data.route);
                     }
                 })
@@ -716,14 +643,14 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 success:function(data)
                 {
                     $('#create-section').modal('hide');
                     $('.course-curriculum').html(data.curriculum);
                     swalNormal(data.swal);
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 error:function(data)
                 {
@@ -747,12 +674,12 @@
                     data:{'_method' : 'DELETE'},
                     dataType:'JSON',
                     beforeSend: function(){
-                        $(".overlay").toggleClass('hidden');
+                        $(".overlay").toggleClass('d-none');
                     },
                     success:function(data)
                     {
                         swalNormal(data.swal);
-                        $(".overlay").toggleClass('hidden');
+                        $(".overlay").toggleClass('d-none');
                         $( '.section-content-' + data.section_id ).remove();
                     }
                 })
@@ -780,7 +707,7 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 success:function(data)
                 {
@@ -793,7 +720,7 @@
                     /******/
                     $('.course-curriculum').html(data.curriculum);
                     swalNormal(data.swal);
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 error:function(data)
                 {
@@ -819,13 +746,13 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 success:function(data)
                 {
                     $('.course-curriculum').html(data.curriculum);
                     swalNormal(data.swal);
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 error:function(data)
                 {
@@ -849,13 +776,13 @@
                     data:{'_method' : 'DELETE'},
                     dataType:'JSON',
                     beforeSend: function(){
-                        $(".overlay").toggleClass('hidden');
+                        $(".overlay").toggleClass('d-none');
                     },
                     success:function(data)
                     {
                         $('.course-curriculum').html(data.curriculum);
                         $( '.lesson-content-' + data.lesson_id ).remove();
-                        $(".overlay").toggleClass('hidden');
+                        $(".overlay").toggleClass('d-none');
                         swalNormal(data.swal);
                     }
                 })
@@ -883,7 +810,7 @@
                 data:formData,
                 dataType:'JSON',
                 beforeSend: function(){
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                 },
                 success:function(data)
                 {
@@ -896,7 +823,7 @@
                     /******/
                     $('.course-curriculum').html(data.curriculum);
                     swalNormal(data.swal);
-                    $(".overlay").toggleClass('hidden');
+                    $(".overlay").toggleClass('d-none');
                     location.reload();
                 },
                 error:function(data)

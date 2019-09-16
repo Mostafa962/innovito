@@ -154,13 +154,17 @@
 						</a>
 					</li>
 					<li>
-							<a href="{{route('en.coordinator.courses.index')}}">
+                        @role('coordinator')
+                            <a href="{{route('en.coordinator.courses.index')}}">
+                        @elseif('employee')
+                            <a href="{{route('en.employee.courses.index')}}">
+                        @endrole
 
-								<svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
+                            <svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 
-								<span>My Courses</span>
-							</a>
-						</li>
+                            <span>My Courses</span>
+                        </a>
+                    </li>
 						<li>
 								<a href="#">
 
@@ -303,23 +307,30 @@
 
 						<span>Profile Settings</span>
 					</a>
-				</li>
+                </li>
+
 				<li>
-						<a href="{{route('en.coordinator.courses.index')}}">
 
-							<svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
+                    @role('coordinator')
+                        <a href="{{route('en.coordinator.courses.index')}}">
+                    @elseif('employee')
+                        <a href="{{route('en.employee.courses.index')}}">
+                    @endrole
 
-							<span>My Courses</span>
-						</a>
-					</li>
-					<li>
-							<a href="#">
+                        <svg class="olymp-happy-sticker-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 
-								<svg class="olymp-albums-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-albums-icon"></use></svg>
+                        <span>My Courses</span>
+                    </a>
+                </li>
 
-								<span>My classRoom</span>
-							</a>
-						</li>
+                <li>
+                    <a href="#">
+
+                        <svg class="olymp-albums-icon"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-albums-icon"></use></svg>
+
+                        <span>My ClassRooms</span>
+                    </a>
+                </li>
 
 				<li>
 					<a href="#">
@@ -327,7 +338,8 @@
 
 						<span>Log Out</span>
 					</a>
-				</li>
+                </li>
+
 			</ul>
 
 
