@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2019 at 07:08 AM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Sep 16, 2019 at 11:00 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -90,7 +90,7 @@ INSERT INTO `completion_criterias` (`id`, `type`, `created_at`, `updated_at`) VA
 CREATE TABLE `completion_criteria_details` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
-  `min_score` int(11) NOT NULL DEFAULT '0',
+  `min_score` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -104,12 +104,12 @@ CREATE TABLE `completion_criteria_details` (
 CREATE TABLE `contents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `lesson_id` bigint(20) UNSIGNED NOT NULL,
-  `text_body` text COLLATE utf8mb4_unicode_ci,
-  `image` text COLLATE utf8mb4_unicode_ci,
-  `video_filename` text COLLATE utf8mb4_unicode_ci,
-  `video_duration` text COLLATE utf8mb4_unicode_ci,
-  `localvideo_link` text COLLATE utf8mb4_unicode_ci,
-  `external_link` text COLLATE utf8mb4_unicode_ci,
+  `text_body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video_filename` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video_duration` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `localvideo_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `external_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -119,12 +119,12 @@ CREATE TABLE `contents` (
 --
 
 INSERT INTO `contents` (`id`, `lesson_id`, `text_body`, `image`, `video_filename`, `video_duration`, `localvideo_link`, `external_link`, `created_at`, `updated_at`) VALUES
-(3, 6, NULL, NULL, 'MyAcademy.pdf', NULL, 'uploads/course/lessons/uploads/090820190458125d748a645d5cbMyAcademy.pdf', NULL, '2019-09-07 17:14:20', '2019-09-08 02:58:12'),
-(4, 7, NULL, 'uploads/course/lessons/uploads/090720191915235d7401cbcf191pp.jpg', NULL, NULL, NULL, NULL, '2019-09-07 17:15:23', '2019-09-07 17:15:23'),
 (6, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-08 01:54:54', '2019-09-08 01:54:54'),
-(7, 10, NULL, 'uploads/course/lessons/uploads/090820190404395d747dd7643f518058122_1318694998215991_4679326290372134627_n.jpg', NULL, NULL, NULL, NULL, '2019-09-08 02:04:39', '2019-09-08 02:04:39'),
-(8, 11, NULL, NULL, NULL, '00:00:05', NULL, 'https://www.google.com', '2019-09-08 02:27:32', '2019-09-08 02:27:32'),
-(9, 12, NULL, NULL, 'audioclip-1562769243-82456.mp4', '00:00:05', 'uploads/course/lessons/uploads/090820190431585d74843eb1d91audioclip-1562769243-82456.mp4', NULL, '2019-09-08 02:31:58', '2019-09-08 02:31:58');
+(8, 11, NULL, NULL, NULL, '00:00:05', NULL, 'https://www.youtube.com/embed/1h6CFC5GfCw', '2019-09-08 02:27:32', '2019-09-08 02:27:32'),
+(9, 12, NULL, NULL, 'audioclip-1562769243-82456.mp4', '00:00:05', 'uploads/course/lessons/uploads/090820190431585d74843eb1d91audioclip-1562769243-82456.mp4', NULL, '2019-09-08 02:31:58', '2019-09-08 02:31:58'),
+(11, 14, NULL, 'uploads/course/lessons/uploads/091620190848485d7f4c70900291518116872774.jpg', NULL, NULL, NULL, NULL, '2019-09-16 05:48:48', '2019-09-16 05:48:48'),
+(12, 15, NULL, 'uploads/course/lessons/uploads/091620190849275d7f4c9780edd1.png', NULL, NULL, NULL, NULL, '2019-09-16 05:49:27', '2019-09-16 05:49:27'),
+(13, 16, NULL, NULL, 'file-example_PDF_1MB.pdf', NULL, 'uploads/course/lessons/uploads/091620190854445d7f4dd47d8affile-example_PDF_1MB.pdf', NULL, '2019-09-16 05:54:44', '2019-09-16 05:54:44');
 
 -- --------------------------------------------------------
 
@@ -144,9 +144,9 @@ CREATE TABLE `courses` (
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `certificate` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `approved` tinyint(1) NOT NULL DEFAULT '0',
-  `expired_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `published` tinyint(1) NOT NULL DEFAULT 0,
+  `approved` tinyint(1) NOT NULL DEFAULT 0,
+  `expired_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -156,7 +156,8 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `user_id`, `category_id`, `course_type_id`, `completion_criteria_id`, `title`, `slug`, `language`, `image`, `certificate`, `description`, `published`, `approved`, `expired_at`, `created_at`, `updated_at`) VALUES
-(18, 4, 1, 1, 1, 'Course 1', 'course-1', 'English', 'uploads/course/images/090620192326115d72eb13e4ba8default-user-icon-5.jpg', NULL, 'course 1 description', 0, 0, '2019-12-30 22:00:00', '2019-09-06 21:26:11', '2019-09-06 21:26:11');
+(18, 4, 1, 1, 1, 'Course 1', 'course-1', 'English', 'uploads/course/images/090620192326115d72eb13e4ba8default-user-icon-5.jpg', NULL, 'course 1 description', 0, 0, '2019-12-30 22:00:00', '2019-09-06 21:26:11', '2019-09-06 21:26:11'),
+(19, 4, 2, 1, 1, 'Course 2', 'course-2', 'English', 'uploads/course/images/090820190648005d74a42043768optica_pattern_12.png', NULL, 'Course Description', 0, 0, '2019-09-10 21:00:00', '2019-09-08 03:48:00', '2019-09-08 03:48:00');
 
 -- --------------------------------------------------------
 
@@ -189,7 +190,7 @@ CREATE TABLE `course_user` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -203,7 +204,12 @@ INSERT INTO `course_user` (`id`, `user_id`, `course_id`, `status`, `created_at`,
 (10, 11, 18, 1, '2019-09-06 21:26:12', '2019-09-06 21:26:12'),
 (11, 12, 18, 1, '2019-09-06 21:26:12', '2019-09-06 21:26:12'),
 (12, 13, 18, 1, '2019-09-06 21:26:12', '2019-09-06 21:26:12'),
-(13, 14, 18, 1, '2019-09-06 21:26:12', '2019-09-06 21:26:12');
+(13, 14, 18, 1, '2019-09-06 21:26:12', '2019-09-06 21:26:12'),
+(14, 10, 19, 1, '2019-09-08 03:48:00', '2019-09-08 03:48:00'),
+(15, 11, 19, 1, '2019-09-08 03:48:00', '2019-09-08 03:48:00'),
+(16, 12, 19, 1, '2019-09-08 03:48:00', '2019-09-08 03:48:00'),
+(17, 13, 19, 1, '2019-09-08 03:48:00', '2019-09-08 03:48:00'),
+(18, 14, 19, 1, '2019-09-08 03:48:00', '2019-09-08 03:48:00');
 
 -- --------------------------------------------------------
 
@@ -231,7 +237,7 @@ CREATE TABLE `lessons` (
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order` int(11) NOT NULL,
-  `score` int(11) NOT NULL DEFAULT '0',
+  `score` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -241,12 +247,12 @@ CREATE TABLE `lessons` (
 --
 
 INSERT INTO `lessons` (`id`, `section_id`, `lesson_type_id`, `title`, `description`, `order`, `score`, `created_at`, `updated_at`) VALUES
-(6, 1, 4, 'aaaaa', 'Lesson File Description', 3, 0, '2019-09-07 17:14:19', '2019-09-08 02:58:12'),
-(7, 1, 3, 'Lesson Text + Image', 'Lesson Text + Image1', 4, 0, '2019-09-07 17:15:23', '2019-09-07 17:15:23'),
-(9, 15, 1, 'Lesson Text 1', 'Lesson Description', 7, 0, '2019-09-08 01:54:54', '2019-09-08 02:55:38'),
-(10, 1, 2, 'Lesson Image 2', NULL, 1, 0, '2019-09-08 02:04:39', '2019-09-08 03:05:50'),
-(11, 15, 5, 'Lesson External', 'Lesson Des', 1, 0, '2019-09-08 02:27:32', '2019-09-08 02:27:32'),
-(12, 15, 6, 'Internal', 'intenr a', 1, 0, '2019-09-08 02:31:58', '2019-09-08 02:31:58');
+(9, 15, 1, 'Lesson Text 1', 'Lesson Description', 3, 0, '2019-09-08 01:54:54', '2019-09-08 02:55:38'),
+(11, 15, 5, 'Lesson External', 'Lesson Des', 0, 0, '2019-09-08 02:27:32', '2019-09-16 05:50:49'),
+(12, 15, 6, 'Internal', 'intenr a', 1, 0, '2019-09-08 02:31:58', '2019-09-16 05:50:49'),
+(14, 20, 2, 'lesson image', NULL, 1, 0, '2019-09-16 05:48:48', '2019-09-16 05:48:48'),
+(15, 20, 3, 'lesson text + image', 'lesson text + image description', 2, 0, '2019-09-16 05:49:27', '2019-09-16 05:50:49'),
+(16, 20, 4, 'lesson file', 'lesson file description', 3, 0, '2019-09-16 05:54:44', '2019-09-16 05:54:44');
 
 -- --------------------------------------------------------
 
@@ -287,7 +293,7 @@ CREATE TABLE `media` (
   `size` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `preview_link` text COLLATE utf8mb4_unicode_ci,
+  `preview_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -476,7 +482,7 @@ CREATE TABLE `sections` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order` int(11) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -486,8 +492,11 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`id`, `course_id`, `title`, `order`, `created_at`, `updated_at`) VALUES
-(1, 18, 'Section 1', 1, '2019-09-06 23:56:20', '2019-09-07 13:04:31'),
-(15, 18, 'Section 2', 2, '2019-09-07 16:15:57', '2019-09-07 16:15:57');
+(15, 18, 'Section 2', 2, '2019-09-07 16:15:57', '2019-09-08 05:15:59'),
+(16, 19, 'Section 1', 1, '2019-09-08 03:48:40', '2019-09-08 05:03:45'),
+(17, 19, 'Section 2', 2, '2019-09-08 03:49:05', '2019-09-08 05:03:45'),
+(19, 19, 'Section 3', 3, '2019-09-08 03:50:06', '2019-09-08 05:03:45'),
+(20, 18, 'Section 1', 1, '2019-09-16 02:21:46', '2019-09-16 02:21:46');
 
 -- --------------------------------------------------------
 
@@ -528,26 +537,26 @@ CREATE TABLE `users` (
   `branch_id` bigint(20) UNSIGNED DEFAULT NULL,
   `username` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `username_slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bio` text COLLATE utf8mb4_unicode_ci,
+  `bio` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` text COLLATE utf8mb4_unicode_ci,
-  `twitter` text COLLATE utf8mb4_unicode_ci,
-  `facebook` text COLLATE utf8mb4_unicode_ci,
+  `linkedin` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `occupation` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthplace` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `little_description` text COLLATE utf8mb4_unicode_ci,
+  `little_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `city` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthday` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `website` text COLLATE utf8mb4_unicode_ci,
-  `header_image` text COLLATE utf8mb4_unicode_ci,
-  `score` int(11) NOT NULL DEFAULT '0',
-  `image` text COLLATE utf8mb4_unicode_ci,
+  `website` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `header_image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `score` int(11) NOT NULL DEFAULT 0,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reset_password_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -559,9 +568,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `department_id`, `branch_id`, `username`, `username_slug`, `bio`, `email`, `email_verified_at`, `password`, `remember_token`, `linkedin`, `twitter`, `facebook`, `status`, `occupation`, `birthplace`, `little_description`, `city`, `country`, `phone`, `birthday`, `website`, `header_image`, `score`, `image`, `reset_password_code`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', NULL, NULL, NULL, NULL, NULL, 'admin@innovito.com', NULL, '$2y$10$6MyzbgM4bTlwDuLAv5xmm.TOi9wL3vJ80m2Ri9zeW2u7jTqEEOKJy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2019-09-06 12:01:45', '2019-09-06 12:01:45'),
-(3, 'Saleh', NULL, NULL, NULL, NULL, NULL, 'mohmed2778@hotmail.com', NULL, '$2y$10$SjDOvAqMsHxVJNNFH3Chv.6LgyR9Z0K0A2WVPAtakQmZVfTcRvrXi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 12:15:06', '2019-09-06 12:15:06'),
-(4, 'Hassan', NULL, NULL, NULL, NULL, NULL, 'mohammedd.salehh@gmail.com', NULL, '$2y$10$ktb1n8iNIsJu3uHtwKIZ6.Eomt02GkHw76HtzQWp8kAL1ak2WYInu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 12:15:12', '2019-09-06 12:17:00'),
-(10, 'Elisabeth Parker Sr.', NULL, NULL, NULL, NULL, NULL, 'crist.lonzo@example.org', '2019-09-06 18:21:06', '$2y$10$0UJ1mxPoSoeL1vFPQopjJuaeABYEeomsSspGKhIcfPyuFMpwVOncm', 'zvBTotccbM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 18:21:07', '2019-09-06 18:21:07'),
+(3, 'Saleh', NULL, NULL, NULL, NULL, NULL, 'mohmed27781@hotmail.com', NULL, '$2y$10$SjDOvAqMsHxVJNNFH3Chv.6LgyR9Z0K0A2WVPAtakQmZVfTcRvrXi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 12:15:06', '2019-09-06 12:15:06'),
+(4, 'Hassan', NULL, NULL, NULL, NULL, 'this is my bio', 'mohammedd.salehh@gmail.com', NULL, '$2y$10$ktb1n8iNIsJu3uHtwKIZ6.Eomt02GkHw76HtzQWp8kAL1ak2WYInu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 12:15:12', '2019-09-06 12:17:00'),
+(10, 'Elisabeth Parker Sr.', NULL, NULL, NULL, NULL, NULL, 'mohmed2778@hotmail.com', '2019-09-06 18:21:06', '$2y$10$ktb1n8iNIsJu3uHtwKIZ6.Eomt02GkHw76HtzQWp8kAL1ak2WYInu', 'zvBTotccbM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 18:21:07', '2019-09-06 18:21:07'),
 (11, 'Edythe Ortiz', NULL, NULL, NULL, NULL, NULL, 'destany57@example.net', '2019-09-06 18:21:07', '$2y$10$WoAR3LOKpoLS0A8mMSi8eOF4jcqf.PUpkNSTPuRZYSt6REgiZFm6m', 'tMHJVxxZy7', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 18:21:07', '2019-09-06 18:21:07'),
 (12, 'Elinore Krajcik', NULL, NULL, NULL, NULL, NULL, 'ozella85@example.com', '2019-09-06 18:21:07', '$2y$10$sD1N8hTbfxCcXXTaUAK4Wug2878lc8t9jDW4qgnkGi1vG1aozNUnu', 'oUwgbtKHxF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 18:21:07', '2019-09-06 18:21:07'),
 (13, 'Isabel Aufderhar', NULL, NULL, NULL, NULL, NULL, 'qwiegand@example.net', '2019-09-06 18:21:07', '$2y$10$S7swcc1fsVY7koRu.qR1JukpGZJhCQbe8a0c/eRTy29thrjL20WOu', 'FrcUVCfyfu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uploads/panel/media/090620191413515d72699fac15coptica_pattern_12.png', 0, 'uploads/panel/media/090620191413515d72699f757f5default-user-icon-5.jpg', NULL, '2019-09-06 18:21:07', '2019-09-06 18:21:07'),
@@ -758,13 +767,13 @@ ALTER TABLE `completion_criteria_details`
 -- AUTO_INCREMENT for table `contents`
 --
 ALTER TABLE `contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `course_types`
@@ -776,7 +785,7 @@ ALTER TABLE `course_types`
 -- AUTO_INCREMENT for table `course_user`
 --
 ALTER TABLE `course_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -788,7 +797,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `lesson_types`
@@ -824,7 +833,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `settings`
