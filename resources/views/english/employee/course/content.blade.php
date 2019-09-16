@@ -40,7 +40,7 @@
 @section('script')
 <script>
     $(document).ready(function() {
-
+        const player = new Plyr('#player');
         /*** Filter Lessons */
         $(document).on('click', '.lesson-id', function () {
             var lesson_id = $( this ).data('lesson-id');

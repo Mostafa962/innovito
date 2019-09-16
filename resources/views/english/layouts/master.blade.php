@@ -36,6 +36,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
     <!-- Custom CSS -->
     @yield('style')
@@ -357,6 +358,7 @@
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
 <script src="{{asset('assets/')}}/js/functions.js"></script>
 <script>
     $.ajaxSetup({
@@ -364,6 +366,7 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    const player = new Plyr('#player');
 
 </script>
 
