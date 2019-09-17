@@ -93,4 +93,15 @@ class LessonController extends Controller
         ]);
 
     }
+
+    public function check(Request $request)
+    {
+        $lesson = Lesson::find($request->lesson_id);
+        auth()->user()->lessons()->attach($lesson, ['course_id' => $lesson->section->course->id]);
+
+        return response()->json([
+            'lesson' => $lesson->getLessonView()
+        ]);
+
+    }
 }
