@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row margin-top">
         <div class="col-lg-4 col-md-12 order-lg-12 order-md-1">
-            <div class="ui-block map ">
+            <div class=" map ">
                 <div id="accordion">
                     @foreach ($course->sections as $section)
                         <h3 class="accordion-header">{{$section->title}}</h3>
@@ -29,7 +29,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="ui-block" oncopy="return false" oncut="return false" onpaste="return false">
+                <div class="ui-block margin-top" oncopy="return false" oncut="return false" onpaste="return false">
 					<div class="ui-block-title">
 						<h6 class="title">timer</h6>
 					</div>
