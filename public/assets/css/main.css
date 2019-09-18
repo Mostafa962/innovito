@@ -16291,6 +16291,12 @@ span.select2-selection{
   left: -51px;
   z-index: 1;
 }
+
+#create-quiz .removequ{
+  position: absolute;
+  right:0;
+  top: -11px;
+}
 #create-quiz .removeanswer:last-child{
  display: none;
 }

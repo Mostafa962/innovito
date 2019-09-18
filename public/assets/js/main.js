@@ -464,35 +464,37 @@ $.fn.togglepanels = function(){
 // ================================================
 // ================================================
 
-// document.getElementById('addanswer').onclick = duplicate;
+
+$(document).ready(function(){ 
+	
+
+	
+	$(".addquest").click(function(){
+		$("#Question" ).clone().appendTo("#cont");
+		$(".Question:last-child").removeClass("d-none");
+		$('.Question:last-child').removeAttr('id');
+		$('.Question:last-child #answerspace').removeAttr('id');
+
+	});	
+	  $(document).on('click', '.addanswer', function(){
+		var i = $(this).closest(".Question").index()+1;
+		$("#answerspace").clone().appendTo($(".Question:nth-child("+i+")" ));
+	  });
 
 
-// var i = 0;
-// var original = document.getElementById('answerspace');
-
-// function duplicate() {
-//     var clone = original.cloneNode(true); // "deep" clone
-//     clone.id = "answerspace" + ++i; // there can only be one element with an ID
-//     original.parentNode.appendChild(clone);
-// }
+	  // ====remove=================
 
 
-$(".addquest").click(function(){
-	$("#Question").clone().appendTo("#cont");
-	$('.answerspace').not('#answerspace:last-child').remove();
+	$(document).on('click', '.removeanswer', function(){
+		$(this).closest(".answer").remove();
+	  });
+	$(document).on('click', '.removequ', function(){
+		$(this).closest(".Question").remove();
+	});
 
-});
+ });
 
-  $("#addanswer").click(function(){
-	$("#answerspace").clone().appendTo("#Question");
-	// $('.answerspace').not('.answerspace:last-child');
-  });
 
-// ====remove=================
-// document.getElementById('removeanswer').onclick = remove;
-
-// function remove() {
-// 	var clone = original.cloneNode(true); // "deep" clone
-// 	clone.id = "answerspace" + ++i; // there can only be one element with an Id
-//     original.remove(clone);
-// }
+	
+	
+	

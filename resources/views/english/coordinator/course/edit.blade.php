@@ -457,18 +457,43 @@
                         </div>
                         <div id="tabs-2">
                             <div id="cont">
-                                <div id="Question" class="form-group   is-focused Question">
-                                    <label class="control-label">add Question</label>
+                               <div id="Question" data-question-number="0" class="form-group   is-focused Question clone d-none">
+                                    <label class="control-label">add fareed</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                  
                                     <input class="form-control" placeholder="" type="text" name="text" required>
 
                                     <div id="answerspace"  class="form-group label-floating  is-focused answer">
                                         <label class="control-label">add answer</label>
                                         <input class="form-control label-floating" placeholder="" type="text" name="text" required>
-                                        <a id="removeanswer" href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                        <a  href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
                                     </div>
-                                    <a id="addanswer" href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                        <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                    </a>
+                                </div>
+
+
+                                <div data-question-number="1" class="form-group   is-focused Question clone" >
+                                    <label class="control-label">add Question</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                    <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                    <div   class="form-group label-floating  is-focused answer">
+                                        <label class="control-label">add answer</label>
+                                       
+                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                        <a href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                    </div>
+                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
                                         <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
                                     </a>
                                 </div>
