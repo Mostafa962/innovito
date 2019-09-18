@@ -50,8 +50,6 @@ function sweetAlertErrorResponse(data)
     });
     Swal.fire({
         html:span,
-        // title: data.title,
-        // text: span,
         type: 'error',
         confirmButtonText: 'Ok'
     })

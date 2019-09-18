@@ -33,8 +33,28 @@ class Course extends Model
         return $this->hasMany('App\Models\Section');
     }
 
+    public function lessons()
+    {
+        return $this->hasManyThrough('App\Models\Lesson','App\Models\Section');
+    }
+
     public function type()
     {
         return $this->belongsTo('App\Models\CourseType', 'course_type_id');
+    }
+
+    public function getLastSeenLessonId()
+    {
+        $last_iteration_lesson_object = $this->lessons()->first();
+        $last_iteration_lesson_object_id = $last_iteration_lesson_object->id;
+
+        if(empty($last_iteration_lesson_object)) return 0;
+
+        foreach ($this->lessons as $lesson) {
+            if($lesson->status != $last_iteration_lesson_object->status) return $last_iteration_lesson_object->id;
+            $last_iteration_lesson_object = $lesson;
+        }
+
+        return $last_iteration_lesson_object_id;
     }
 }

@@ -3,10 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Lesson extends Model
 {
     protected $fillable = ['section_id', 'lesson_type_id', 'title', 'description', 'order', 'score'];
+    protected $appends = ['status'];
+
+    public function getStatusAttribute()
+    {
+        if(!Auth::check()) return 0;
+        if(Auth::user()->hasRole('employee'))
+        {
+            return (int)!empty($this->users()->find(Auth::user()->id));
+        }
+        return 0;
+    }
 
     public function section()
     {
@@ -21,6 +33,11 @@ class Lesson extends Model
     public function content()
     {
         return $this->hasOne('App\Models\Content');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'user_lessons', 'lesson_id', 'user_id')->withTimestamps();
     }
 
     public function getLessonView()
