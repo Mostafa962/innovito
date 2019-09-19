@@ -31,7 +31,7 @@
 							<div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
 								<ul class="profile-menu">
 									<li>
-                                        <a href="06-ProfilePage.html"><i class="fas fa-file-alt"></i>Add survey</a>
+                                        <a href="#" data-toggle="modal" data-target="#create-survey"><i class="fas fa-file-alt"></i>Add survey</a>
 									</li>
 									<li>
                                         <a href="#" class="delete-course"><i class="fas fa-trash-alt"></i>Delete</a>
@@ -458,7 +458,7 @@
                         <div id="tabs-2">
                             <div id="cont">
                                <div id="Question" data-question-number="0" class="form-group   is-focused Question clone d-none">
-                                    <label class="control-label">add fareed</label>
+                                    <label class="control-label">add Question</label>
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
@@ -593,6 +593,186 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+	<!-- Window-popup Create  surey -->
+    <div class="modal fade" id="create-survey" tabindex="-1" role="dialog" aria-labelledby="create-survey" aria-hidden="true">
+		<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+				<div class="modal-content">
+					<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+						<svg class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+					</a>
+					<div class="modal-header">
+						<h6 class="title">Create quiz</h6>
+					</div>
+
+					<div class="modal-body">
+
+                    <div id="tabs">
+                        <ul class="white">
+
+                                <li><a href="#tabs-1">Main</a></li>
+                                <li><a href="#tabs-2">survey Quistions</a></li>
+
+                        </ul>
+                        <div id="tabs-1">
+                                <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="" enctype="">
+                                    @csrf
+
+                                    <div class="form-group ">
+                                        <label class="control-label">survey Title</label>
+                                        <input class="form-control" placeholder=" Title" name="title" type="text" required>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label class="control-label">survey Description</label>
+                                        <textarea class="form-control" placeholder=" Description" name="description" type="text" required></textarea>
+                                    </div>
+
+                                    <div class="form-group  ">
+                                        <label class="control-label">survey Section</label>
+                                        <select class="form-control category-select" name="section_id" required>
+                                            @foreach ($course->sections as $section)
+                                                <option value="{{$section->id}}">{{$section->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group  ">
+                                        <label class="control-label">survey Order in Section</label>
+                                        <input class="form-control" placeholder="survey Order" type="number" name="order" min="1" required>
+                                    </div>
+
+                                  
+                                </form>
+
+
+
+                        </div>
+                        <div id="tabs-2">
+                            <div id="s-cont">
+                                 <div id="select" data-question-number="0" class="form-group   is-focused Question d-none ">
+                                    <label class="control-label">select</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                  
+                                    <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                    <div id="answerspace"  class="form-group label-floating  is-focused answer ">
+                                        <label class="control-label">add answer</label>
+                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                        <a  href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                    </div>
+                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                        <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                    </a>
+                                </div>
+
+
+                               <div id="checkbox" data-question-number="0" class="form-group   is-focused Question d-none ">
+                                    <label class="control-label">checkbox</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                  
+                                    <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                    <div id="answerspace"  class="form-group label-floating  is-focused answer">
+                                        <label class="control-label">add answer</label>
+                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                        <a  href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                    </div>
+                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                        <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                    </a>
+                                </div>
+
+
+
+                                <div id="radio" data-question-number="0" class="form-group   is-focused Question  d-none">
+                                    <label class="control-label">radio</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                  
+                                    <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                    <div id="answerspace"  class="form-group label-floating  is-focused answer">
+                                        <label class="control-label">add answer</label>
+                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                        <a  href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                    </div>
+                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                        <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                    </a>
+                                </div>
+
+
+
+                                <div id="text" data-question-number="0" class="form-group   is-focused text ">
+                                    <label class="control-label">text</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                  
+                                    <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                    
+                                </div>
+
+
+
+
+                                <div id="number" data-question-number="0" class="form-group   is-focused Question d-none">
+                                    <label class="control-label">number</label>
+                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                        </a>
+                                  
+                                    <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                    
+                                </div>
+
+
+
+
+                            </div>
+                            <div id="s-type" class="form-group  ">
+                                <label class="control-label">add question</label>
+                                <select class="form-control category-select" name="section_id" required>
+                                        <option value="">choose a qustion type</option>
+                                        <option value="text">text</option>
+                                        <option value="select">select</option>
+                                        <option value="checkbox">checkbox</option>
+                                        <option value="radio">radio</option>
+                                        <option value="number">number</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<!-- Window-popup Create surey -->
 
 @endsection
 @section('script')

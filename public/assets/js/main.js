@@ -455,7 +455,7 @@ $.fn.togglepanels = function(){
   $( "#create-lesson #tabs" ).tabs();
   $( "#create-quiz #tabs" ).tabs();
   $("#accordion").togglepanels();
- 
+  $( "#create-survey #tabs" ).tabs();
 
 
 // ================================================
@@ -493,6 +493,65 @@ $(document).ready(function(){
 	});
 
  });
+
+// ================================================
+// ================================================
+// ==========control survey quistions =============
+// ================================================
+// ================================================
+
+
+$(document).ready(function(){ 
+	
+	$(document).on('change', '#s-type', function(){
+		var type = $("#s-type option:selected").val();
+		
+		if(type == "text"){
+			alert(type);
+			$("#text" ).clone().appendTo($("#s-cont"));
+			$(".text:last-child").removeClass("d-none");
+			$('.text:last-child').removeAttr('id');
+			$('.text:last-child #answerspace').removeAttr('id');
+			type = 0;
+			// $('select option[value=""]').attr("selected",true);
+		}	
+		// else if (type == "select"){
+		// 	// do
+		// }
+		else{
+			//do
+		}
+	})
+})
+
+	
+
+
+
+	
+	// $(".addquest").click(function(){
+	// 	$("#Question" ).clone().appendTo("#cont");
+	// 	$(".Question:last-child").removeClass("d-none");
+	// 	$('.Question:last-child').removeAttr('id');
+	// 	$('.Question:last-child #answerspace').removeAttr('id');
+
+	// });	
+	//   $(document).on('click', '.addanswer', function(){
+	// 	var i = $(this).closest(".Question").index()+1;
+	// 	$("#answerspace").clone().appendTo($(".Question:nth-child("+i+")" ));
+	//   });
+
+
+	//   // ====remove=================
+
+
+	// $(document).on('click', '.removeanswer', function(){
+	// 	$(this).closest(".answer").remove();
+	//   });
+	// $(document).on('click', '.removequ', function(){
+	// 	$(this).closest(".Question").remove();
+	// });
+
 
 
 	

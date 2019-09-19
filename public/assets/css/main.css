@@ -16304,6 +16304,32 @@ span.select2-selection{
 #create-quiz .removeanswer:last-child{
  display: none;
 }
+#create-survey div.answer{
+  width: 85%;
+  margin: 15px 0 10px auto;
+}
+#create-survey .addanswer{
+background: #fff;
+position: absolute;
+bottom: -15px;
+left: 7px;
+z-index: 2;
+}
+#create-survey .removeanswer{
+position: absolute;
+top: 15px;
+left: -51px;
+z-index: 1;
+}
+
+#create-survey .removequ{
+position: absolute;
+right:0;
+top: -11px;
+}
+#create-survey .removeanswer:last-child{
+display: none;
+}
 
 
 
