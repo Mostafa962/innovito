@@ -653,7 +653,7 @@
                         </div>
                         <div id="tabs-2">
                             <div id="s-cont">
-                                 <div id="select" data-question-number="0" class="form-group   is-focused Question d-none ">
+                                 <div id="select" data-question-number="0" class="form-group  select is-focused Question d-none ">
                                     <label class="control-label">select</label>
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
@@ -674,7 +674,7 @@
                                 </div>
 
 
-                               <div id="checkbox" data-question-number="0" class="form-group   is-focused Question d-none ">
+                               <div id="checkbox" data-question-number="0" class="form-group   is-focused checkbox Question d-none ">
                                     <label class="control-label">checkbox</label>
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
@@ -696,7 +696,7 @@
 
 
 
-                                <div id="radio" data-question-number="0" class="form-group   is-focused Question  d-none">
+                                <div id="radio" data-question-number="0" class="form-group   is-focused radio Question d-none">
                                     <label class="control-label">radio</label>
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
@@ -718,13 +718,13 @@
 
 
 
-                                <div id="text" data-question-number="0" class="form-group   is-focused text ">
+                                <div id="text" data-question-number="0" class="form-group Question  text d-none">
                                     <label class="control-label">text</label>
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
                                   
-                                    <input class="form-control" placeholder="" type="text" name="text" required>
+                                    <input class="form-control" placeholder=""  type="text" name="text" required>
 
                                     
                                 </div>
@@ -732,8 +732,8 @@
 
 
 
-                                <div id="number" data-question-number="0" class="form-group   is-focused Question d-none">
-                                    <label class="control-label">number</label>
+                                <div id="number" data-question-number="0" class="form-group Question   number d-none">
+                                    <label class="control-label ">number</label>
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
@@ -749,8 +749,8 @@
                             </div>
                             <div id="s-type" class="form-group  ">
                                 <label class="control-label">add question</label>
-                                <select class="form-control category-select" name="section_id" required>
-                                        <option value="">choose a qustion type</option>
+                                <select class="form-control category-select" name="section_id"  onfocus="this.value=''" required>
+                                        <option value="free">choose a qustion type</option>
                                         <option value="text">text</option>
                                         <option value="select">select</option>
                                         <option value="checkbox">checkbox</option>

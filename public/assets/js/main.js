@@ -507,20 +507,63 @@ $(document).ready(function(){
 		var type = $("#s-type option:selected").val();
 		
 		if(type == "text"){
-			alert(type);
+			
 			$("#text" ).clone().appendTo($("#s-cont"));
 			$(".text:last-child").removeClass("d-none");
 			$('.text:last-child').removeAttr('id');
 			$('.text:last-child #answerspace').removeAttr('id');
-			type = 0;
-			// $('select option[value=""]').attr("selected",true);
+		
+			$('#s-type option[value="free"]').attr("selected",true);
+			$('#s-type option[value="free"]').attr("selected",false);
+		
+			
+		
 		}	
-		// else if (type == "select"){
-		// 	// do
-		// }
-		else{
-			//do
+		else if (type == "number"){
+			$("#number" ).clone().appendTo($("#s-cont"));
+			$(".number:last-child").removeClass("d-none");
+			$('.number:last-child').removeAttr('id');
+			$('.number:last-child #answerspace').removeAttr('id');
+		
+			$('#s-type option[value="free"]').attr("selected",true);
+			$('#s-type option[value="free"]').attr("selected",false);
+		
+	
 		}
+		else if (type == "radio"){
+			$("#radio" ).clone().appendTo($("#s-cont"));
+			$(".radio:last-child").removeClass("d-none");
+			$('.radio:last-child').removeAttr('id');
+			$('.radio:last-child #answerspace').removeAttr('id');
+		
+			$('#s-type option[value="free"]').attr("selected",true);
+			$('#s-type option[value="free"]').attr("selected",false);
+		
+	
+		}
+		else if (type == "checkbox"){
+			$("#checkbox" ).clone().appendTo($("#s-cont"));
+			$(".checkbox:last-child").removeClass("d-none");
+			$('.checkbox:last-child').removeAttr('id');
+			$('.checkbox:last-child #answerspace').removeAttr('id');
+		
+			$('#s-type option[value="free"]').attr("selected",true);
+			$('#s-type option[value="free"]').attr("selected",false);
+		
+	
+		}
+		else if (type == "select"){
+			$("#select" ).clone().appendTo($("#s-cont"));
+			$(".select:last-child").removeClass("d-none");
+			$('.select:last-child').removeAttr('id');
+			$('.select:last-child #answerspace').removeAttr('id');
+		
+			$('#s-type option[value="free"]').attr("selected",true);
+			$('#s-type option[value="free"]').attr("selected",false);
+		
+	
+		}
+		
 	})
 })
 
