@@ -106,6 +106,9 @@ Route::group(['middleware' => ['checkAuth']], function ()
         /** Lessons */
         Route::resource('lessons', 'LessonController');
 
+        /** Quizzes */
+        Route::resource('quizzes', 'QuizController');
+
         /** Badges */
         Route::resource('badges', 'BadgeController');
     });
@@ -126,6 +129,7 @@ Route::group(['middleware' => ['checkAuth']], function ()
         Route::resource('lessons', 'LessonController');
         Route::post('lessons/filter', 'LessonController@filter')->name('lessons.filter');
         Route::post('lessons/check', 'LessonController@check')->name('lessons.check');
+
     });
 
 });

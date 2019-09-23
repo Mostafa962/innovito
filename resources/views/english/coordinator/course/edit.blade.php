@@ -129,23 +129,18 @@
 											<div class=" col col-md-4 col-sm-12" >
 												<div class="ui-block ">
 													<!-- W-Action -->
-													<a href="">
-													<div class="widget catco" style="background-image: url('{{asset('assets')}}/img/bg-event-day.jpg');">
-
-														<div class="content">
-
-																<a href="#" class="  btn btn-control" data-toggle="modal" data-target="#create-quiz">
-																	<svg class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
-																</a>
-
-																<div class="author-content">
-																	<a href="#" class="h5 author-name color-white">Add Quizes</a>
-
-																</div>
-
-															</div>
-													</div>
-												</a>
+                                                    <a href="">
+                                                        <div class="widget catco" style="background-image: url('{{asset('assets')}}/img/bg-event-day.jpg');">
+                                                            <div class="content">
+                                                                <a href="#" class="  btn btn-control" data-toggle="modal" data-target="#create-quiz">
+                                                                    <svg class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                                                </a>
+                                                                <div class="author-content">
+                                                                    <a href="#" class="h5 author-name color-white">Add Quizzes</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
 													<!-- ... end W-Action -->
 												</div>
 
@@ -400,118 +395,125 @@
 
 	<!-- Window-popup Create  quiz -->
 <div class="modal fade" id="create-quiz" tabindex="-1" role="dialog" aria-labelledby="create-quiz" aria-hidden="true">
-		<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
-				<div class="modal-content">
-					<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-						<svg class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-					</a>
-					<div class="modal-header">
-						<h6 class="title">Create quiz</h6>
-					</div>
+    <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+            <div class="modal-header">
+                <h6 class="title">Create Quiz</h6>
+            </div>
+            <div class="modal-body">
+                <div id="tabs">
+                    <ul class="white">
+                        <li><a href="#tabs-1">Main</a></li>
+                        <li><a href="#tabs-2">Quistions</a></li>
+                    </ul>
+                    <div id="tabs-1">
+                            <form method="post" class="create_quiz_form" data-lesson-type-id="8" id="lesson-type-id-8">
+                                @csrf
 
-					<div class="modal-body">
-
-                    <div id="tabs">
-                        <ul class="white">
-
-                                <li><a href="#tabs-1">Main</a></li>
-                                <li><a href="#tabs-2">Quistions</a></li>
-
-                        </ul>
-                        <div id="tabs-1">
-                                <form method="post" class="create_lesson_form" data-lesson-type-id="1" id="" enctype="">
-                                    @csrf
-
-                                    <div class="form-group ">
-                                        <label class="control-label">quiz Title</label>
-                                        <input class="form-control" placeholder=" Title" name="title" type="text" required>
-                                    </div>
-
-                                    <div class="form-group ">
-                                        <label class="control-label">quiz Description</label>
-                                        <textarea class="form-control" placeholder=" Description" name="description" type="text" required></textarea>
-                                    </div>
-
-                                    <div class="form-group  ">
-                                        <label class="control-label">quiz Section</label>
-                                        <select class="form-control category-select" name="section_id" required>
-                                            @foreach ($course->sections as $section)
-                                                <option value="{{$section->id}}">{{$section->title}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group  ">
-                                        <label class="control-label">quiz Order in Section</label>
-                                        <input class="form-control" placeholder="quiz Order" type="number" name="order" min="1" required>
-                                    </div>
-
-                                    <div class="form-group  ">
-                                        <label class="control-label">Duration</label>
-                                        <input class="form-control" placeholder="Duration" type="number" value="0" name="Duration" required>
-                                    </div>
-                                </form>
-
-
-
-                        </div>
-                        <div id="tabs-2">
-                            <div id="cont">
-                               <div id="Question" data-question-number="0" class="form-group   is-focused Question clone d-none">
-                                    <label class="control-label">add Question</label>
-                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
-                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-                                        </a>
-                                  
-                                    <input class="form-control" placeholder="" type="text" name="text" required>
-
-                                    <div id="answerspace"  class="form-group label-floating  is-focused answer">
-                                        <label class="control-label">add answer</label>
-                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
-                                        <a  href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
-                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-                                        </a>
-                                    </div>
-                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
-                                        <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
-                                    </a>
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Title</label>
+                                    <input class="form-control" placeholder="Quiz Title" name="title" type="text" required>
                                 </div>
 
-
-                                <div data-question-number="1" class="form-group   is-focused Question clone" >
-                                    <label class="control-label">add Question</label>
-                                    <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
-                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-                                        </a>
-                                    <input class="form-control" placeholder="" type="text" name="text" required>
-
-                                    <div   class="form-group label-floating  is-focused answer">
-                                        <label class="control-label">add answer</label>
-                                       
-                                        <input class="form-control label-floating" placeholder="" type="text" name="text" required>
-                                        <a href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
-                                            <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-                                        </a>
-                                    </div>
-                                    <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
-                                        <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
-                                    </a>
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Description</label>
+                                    <textarea class="form-control" placeholder="Quiz Description" name="description" type="text" required></textarea>
                                 </div>
-                            </div>
-                            <a  class="btn  btn-secondary btn-lg full-width addquest" >add another</a>
-                        </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Section</label>
+                                    <select class="form-control category-select" name="section_id" required>
+                                        @foreach ($course->sections as $section)
+                                            <option value="{{$section->id}}">{{$section->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Order in Section</label>
+                                    <input class="form-control" placeholder="Quiz Order" type="number" name="order" min="1" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Score When finished</label>
+                                    <input class="form-control" placeholder="Quiz Order" type="number" value="0" min="1" name="score" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Duration</label>
+                                    <input class="form-control" placeholder="minutes : seconds (ex: 30:00)" type="text"  name="time_limit" pattern="[0-9]{2}[:][0-9]{2}" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Passing Score</label>
+                                    <input class="form-control" placeholder="Quiz Passing Score for employee" type="number" value="0" min="1" name="passing_score" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quiz Due Date</label>
+                                    <input class="form-control" placeholder="Quiz Due Date" type="datetime-local" name="due_date" required>
+                                </div>
+                                <button class="btn btn-blue btn-lg full-width">Create Quiz</button>
+                            </form>
+
+
+
                     </div>
+                    <div id="tabs-2">
+                        <div id="cont">
+                            <div id="Question" data-question-number="0" class="form-group   is-focused Question clone d-none">
+                                <label class="control-label">add Question</label>
+                                <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                    </a>
+
+                                <input class="form-control" placeholder="" type="text" name="text" required>
+
+                                <div id="answerspace"  class="form-group label-floating  is-focused answer">
+                                    <label class="control-label">add answer</label>
+                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                    <a  href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                    </a>
+                                </div>
+                                <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                    <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                </a>
+                            </div>
 
 
+                            <div data-question-number="1" class="form-group   is-focused Question clone" >
+                                <label class="control-label">add Question</label>
+                                <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
+                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                    </a>
+                                <input class="form-control" placeholder="" type="text" name="text" required>
 
+                                <div   class="form-group label-floating  is-focused answer">
+                                    <label class="control-label">add answer</label>
 
+                                    <input class="form-control label-floating" placeholder="" type="text" name="text" required>
+                                    <a href="#" class="btn btn-control removeanswer" data-toggle="tooltip" data-placement="top" title="Remove an ANSWER">
+                                        <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                                    </a>
+                                </div>
+                                <a  href="#" class="btn btn-control addanswer" data-toggle="tooltip" data-placement="top" title="Add a new ANSWER">
+                                    <svg style="fill:#38A9FF;" class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <a  class="btn  btn-secondary btn-lg full-width addquest" >add another</a>
+                        <a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
 
-
-                    <a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
+                    </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
+</div>
 
 	<!-- Window-popup Create  quiz -->
 
@@ -645,7 +647,7 @@
                                         <input class="form-control" placeholder="survey Order" type="number" name="order" min="1" required>
                                     </div>
 
-                                  
+
                                 </form>
 
 
@@ -658,7 +660,7 @@
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
-                                  
+
                                     <input class="form-control" placeholder="" type="text" name="text" required>
 
                                     <div id="answerspace"  class="form-group label-floating  is-focused answer ">
@@ -679,7 +681,7 @@
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
-                                  
+
                                     <input class="form-control" placeholder="" type="text" name="text" required>
 
                                     <div id="answerspace"  class="form-group label-floating  is-focused answer">
@@ -701,7 +703,7 @@
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
-                                  
+
                                     <input class="form-control" placeholder="" type="text" name="text" required>
 
                                     <div id="answerspace"  class="form-group label-floating  is-focused answer">
@@ -723,10 +725,10 @@
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
-                                  
+
                                     <input class="form-control" placeholder=""  type="text" name="text" required>
 
-                                    
+
                                 </div>
 
 
@@ -737,10 +739,10 @@
                                     <a href="#" class="btn btn-control removequ" data-toggle="tooltip" data-placement="top" title="Remove an Question">
                                             <svg style="fill:#FF0000;" class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
                                         </a>
-                                  
+
                                     <input class="form-control" placeholder="" type="text" name="text" required>
 
-                                    
+
                                 </div>
 
 
@@ -1008,12 +1010,12 @@
             formData.append('_method', 'PUT');
 
             $.ajax({
-                url:url,
-                method:"POST",
+                url: url,
+                method: "POST",
                 processData: false, // important
                 contentType: false, // important
-                data:formData,
-                dataType:'JSON',
+                data: formData,
+                dataType: 'JSON',
                 beforeSend: function(){
                     $(".overlay").toggleClass('d-none');
                 },
@@ -1040,6 +1042,35 @@
         });
         /*** Edit Lesson */
 
+        /*** Create Quiz */
+        $(document).on('submit', '.create_quiz_form', function(event){
+            event.preventDefault();
+            var lesson_type_id = $( this ).data('lesson-type-id');
+            var formData = new FormData(document.querySelector('#lesson-type-id-' + lesson_type_id));
+            formData.append('lesson_type_id', lesson_type_id);
+
+            $.ajax({
+                url:"{{ route('en.coordinator.quizzes.store') }}",
+                method:"POST",
+                processData: false, // important
+                contentType: false, // important
+                data:formData,
+                dataType:'JSON',
+                beforeSend: function(){
+                    $(".overlay").toggleClass('d-none');
+                },
+                success:function(data)
+                {
+                    $('.course-curriculum').html(data.curriculum);
+                    swalNormal(data.swal);
+                    $(".overlay").toggleClass('d-none');
+                },
+                error:function(data)
+                {
+                    sweetAlertErrorResponse(data);
+                }
+            })
+        });
     });
 </script>
 @endsection
