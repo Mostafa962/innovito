@@ -269,8 +269,7 @@
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
 					<img alt="author" src="{{asset('') . Auth::user()->image}}" class="avatar" style="width:36px;height:36px">
-					<span class="icon-status online"></span>
-
+				
 				</div>
 				<a href="{{route('en.home.index')}}" class="author-name fn">
 					<div class="author-title">
