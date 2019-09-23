@@ -9989,7 +9989,8 @@ ol ol li {
     background: rgba(43, 45, 59, 0.8); }
 
 .table {
-  display: table; }
+  display: table; 
+}
 
 .inline-items > * {
   display: inline-block;
@@ -16095,10 +16096,27 @@ div.mejs-speed-button {
 .ui-accordion-header,
 .ui-accordion-header.ui-state-active{
   border:1px solid #c5c5c5;
-  background: #38A9FF;
+  background: #3F4257;
   font-size: 16px !important;
   font-weight: 700;
   color:#fff;
+  z-index: 1;
+}
+.ui-accordion-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+ 
+  z-index: -2;
+  background: #39A9FF;
+}
+.ui-accordion-header:nth-of-type(1):before {
+  width: 40%;
+}
+.ui-accordion-header:nth-of-type(2):before {
+  width: 80%;
 }
 .ui-accordion-header span{
   color:rgb(255, 255, 255);
@@ -16214,6 +16232,7 @@ margin-bottom:30px;
 }
 .table{
   border-radius: 4px !important;
+  overflow: hidden;
 }
 /* ============================== */
 /* to make images centered  */
@@ -16233,6 +16252,9 @@ margin-bottom:30px;
   width: auto !important;
   margin-left: 50%;
   transform: translateX(-50%);
+}
+.centeeeer{
+  transform: translateX(0) !important;
 }
 /* ============================== */
 #timer{

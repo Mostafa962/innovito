@@ -8,71 +8,71 @@
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar67-sm.jpg" class="avatar">
-                        <span class="icon-status online"></span>
+                       
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar62-sm.jpg" class="avatar">
-                        <span class="icon-status online"></span>
+                       
                     </div>
                 </li>
 
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar68-sm.jpg" class="avatar">
-                        <span class="icon-status online"></span>
+                        
                     </div>
                 </li>
 
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar69-sm.jpg" class="avatar">
-                        <span class="icon-status away"></span>
+                        
                     </div>
                 </li>
 
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar70-sm.jpg" class="avatar">
-                        <span class="icon-status disconected"></span>
+                       
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar64-sm.jpg" class="avatar">
-                        <span class="icon-status online"></span>
+                        
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar71-sm.jpg" class="avatar">
-                        <span class="icon-status online"></span>
+                       
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar72-sm.jpg" class="avatar">
-                        <span class="icon-status away"></span>
+                       
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar63-sm.jpg" class="avatar">
-                        <span class="icon-status status-invisible"></span>
+                       
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar72-sm.jpg" class="avatar">
-                        <span class="icon-status away"></span>
+                      
                     </div>
                 </li>
                 <li class="inline-items js-chat-open">
 
                     <div class="author-thumb">
                         <img alt="author" src="{{asset('assets/')}}/img/avatar71-sm.jpg" class="avatar">
-                        <span class="icon-status online"></span>
+                      
                     </div>
                 </li>
             </ul>
