@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\english\Employee;
+namespace App\Http\Controllers\english\Coordinator;
 
-use App\Models\Lesson;
+use App\Models\Badge;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class LessonController extends Controller
+class BadgeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        return view('english.coordinator.badge.index');
     }
 
     /**
@@ -42,10 +42,10 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Badge  $badge
      * @return \Illuminate\Http\Response
      */
-    public function show(Lesson $lesson)
+    public function show(Badge $badge)
     {
         //
     }
@@ -53,10 +53,10 @@ class LessonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Badge  $badge
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lesson $lesson)
+    public function edit(Badge $badge)
     {
         //
     }
@@ -65,10 +65,10 @@ class LessonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Badge  $badge
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lesson $lesson)
+    public function update(Request $request, Badge $badge)
     {
         //
     }
@@ -76,33 +76,11 @@ class LessonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Badge  $badge
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lesson $lesson)
+    public function destroy(Badge $badge)
     {
         //
-    }
-
-    public function filter(Request $request)
-    {
-        $lesson = Lesson::find($request->lesson_id);
-
-        return response()->json([
-            'lesson' => $lesson->getLessonView()
-        ]);
-
-    }
-
-    public function check(Request $request)
-    {
-        $lesson = Lesson::find($request->lesson_id);
-        auth()->user()->lessons()->attach($lesson, ['course_id' => $lesson->section->course->id]);
-
-        
-        return response()->json([
-            'lesson' => $lesson->getLessonView()
-        ]);
-
     }
 }

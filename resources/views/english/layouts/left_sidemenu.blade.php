@@ -47,7 +47,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="24-CommunityBadges.html">
+					<a href="{{route('en.coordinator.badges.index')}}">
 						<svg class="olymp-badge-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Community Badges"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-badge-icon"></use></svg>
 					</a>
 				</li>
@@ -125,7 +125,7 @@
 
 
 				<li>
-					<a href="24-CommunityBadges.html">
+					<a href="{{route('en.coordinator.badges.index')}}">
 						<svg class="olymp-badge-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Community Badges"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-badge-icon"></use></svg>
 						<span class="left-menu-title">Community Badges</span>
 					</a>
@@ -279,7 +279,7 @@
 
 
 					<li>
-						<a href="24-CommunityBadges.html">
+						<a href="{{route('en.coordinator.badges.index')}}">
 							<svg class="olymp-badge-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Community Badges"><use xlink:href="{{asset('assets/')}}/svg-icons/sprites/icons.svg#olymp-badge-icon"></use></svg>
 							<span class="left-menu-title">Community Badges</span>
 						</a>

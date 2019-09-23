@@ -105,6 +105,9 @@ Route::group(['middleware' => ['checkAuth']], function ()
 
         /** Lessons */
         Route::resource('lessons', 'LessonController');
+
+        /** Badges */
+        Route::resource('badges', 'BadgeController');
     });
 
     /**** Employee Part */
