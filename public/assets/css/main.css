@@ -16390,3 +16390,29 @@ display: none;
   background: #9a9fbf !important;
   border: 0;
 }
+/* 
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: block;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: block;
+    width: 100%;
+    height: auto;
+    padding: 1.1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e6ecf5;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.custom-file-upload svg{
+  margin-right: 5px;
+} */

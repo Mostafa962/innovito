@@ -28,8 +28,8 @@
 
     <!-- Plugins -->
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{asset('/plugins/adminlte/bower_components/select2/dist/css/select2.min.css')}}">
-
+	<link rel="stylesheet" href="{{asset('/plugins/adminlte/bower_components/select2/dist/css/select2.min.css')}}">
+	
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 
 	<!-- Main Styles CSS -->
@@ -37,6 +37,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+ <!-- input file -->
+ <link rel="stylesheet" href="{{asset('assets/')}}/css/normalize.css">
+	 <link rel="stylesheet" href="{{asset('assets/')}}/css/demo.css">
+	 <link rel="stylesheet" href="{{asset('assets/')}}/css/component.css">
 
     <!-- Custom CSS -->
     @yield('style')
@@ -355,6 +359,12 @@
 
 <!-- Select2 -->
 <script src="{{asset('/plugins/adminlte/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+
+
+
+<!-- input file -->
+<!-- <script src="{{asset('/plugins/adminlte/bower_components/select2/dist/js/jquery-v1.min.js')}}"></script> -->
+<script src="{{asset('/plugins/adminlte/bower_components/select2/dist/js/custom-file-input.js')}}"></script>
 
 <script src="{{asset('assets/')}}/Bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
