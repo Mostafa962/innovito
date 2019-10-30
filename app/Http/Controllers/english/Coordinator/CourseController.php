@@ -47,8 +47,14 @@ class CourseController extends Controller
     public function create()
     {
         //
-    }
+        return view('english.coordinator.course.courses');
 
+    }
+    public function view()
+    {
+        //
+        return view('english.coordinator.course.courses');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -91,6 +97,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
+        return view('english.coordinator.course.show')
+        ->with('course', $course);
+
     }
 
     /**

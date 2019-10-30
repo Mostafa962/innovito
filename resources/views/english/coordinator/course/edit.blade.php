@@ -20,7 +20,7 @@
 							<div class="col col-lg-5 col-md-5 col-sm-12 col-12">
 								<ul class="profile-menu">
 									<li>
-										<a href="02-ProfilePage.html" ><i class="fas fa-eye"></i>Preview</a>
+										<a target="_blank" href="{{route('en.coordinator.courses.show', [$course->slug])}}" ><i class="fas fa-eye"></i>Preview</a>
 									</li>
 									<li>
 										<a href="#" data-toggle="modal" data-target="#edit-course"> <i class="fas fa-edit"></i>Edit</a>
@@ -171,7 +171,7 @@
                                                                 <tr class="lesson-content-{{$lesson->id}}">
                                                                     <td>{{$lesson->title}}</td>
                                                                     <td class="text-center" style="width:130px">{{$lesson->lessonType->title}}</td>
-                                                                    <td class="text-center" style="width:130px"><a href="#" data-toggle="modal" data-target="#edit-lesson-{{$lesson->id}}"><i class="fas fa-edit" style="margin-right: 5px;"></i>Edit</a></td>
+                                                                    <td class="text-center" style="width:130px"><a href="#" data-toggle="modal" data-target="@if($lesson->lesson_type_id == 8) #edit-quiz-{{$lesson->id}} @else #edit-lesson-{{$lesson->id}} @endif"><i class="fas fa-edit" style="margin-right: 5px;"></i>Edit</a></td>
                                                                     <td class="text-center" style="width:130px"><a href="#" class="delete-lesson" data-lesson-id="{{$lesson->id}}"><i class="fas fa-trash-alt" style="margin-right: 5px;"></i>Delete</a></td>
                                                                 </tr>
                                                                 @include('english.coordinator.course.partials.lessons.edit_modal', ['lesson' => $lesson])
@@ -407,7 +407,7 @@
                 <div id="tabs">
                     <ul class="white">
                         <li><a href="#tabs-1">Main</a></li>
-                        <li><a href="#tabs-2">Quistions</a></li>
+                        {{-- <li><a href="#tabs-2">Quistions</a></li> --}}
                     </ul>
                     <div id="tabs-1">
                             <form method="post" class="create_quiz_form" data-lesson-type-id="8" id="lesson-type-id-8">
@@ -462,7 +462,7 @@
 
 
                     </div>
-                    <div id="tabs-2">
+                    {{-- <div id="tabs-2">
                         <div id="cont">
                             <div id="Question" data-question-number="0" class="form-group   is-focused Question clone d-none">
                                 <label class="control-label">add Question</label>
@@ -508,7 +508,7 @@
                         <a  class="btn  btn-secondary btn-lg full-width addquest" >add another</a>
                         <a href="#" class="btn btn-blue btn-lg full-width">Create Quiz</a>
 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -607,7 +607,7 @@
 						<svg class="olymp-close-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
 					</a>
 					<div class="modal-header">
-						<h6 class="title">Create quiz</h6>
+						<h6 class="title">Create Survey</h6>
 					</div>
 
 					<div class="modal-body">
@@ -616,7 +616,7 @@
                         <ul class="white">
 
                                 <li><a href="#tabs-1">Main</a></li>
-                                <li><a href="#tabs-2">survey Quistions</a></li>
+                                <li><a href="#tabs-2">Survey Questions</a></li>
 
                         </ul>
                         <div id="tabs-1">
@@ -1071,6 +1071,51 @@
                 }
             })
         });
+        /*** Create Quiz */
+
+        /*** Edit Quiz */
+        $(document).on('submit', '.edit_quiz_form', function(event){
+            event.preventDefault();
+            var lesson_id = $( this ).data( "lesson-id" );
+            var url = '{{ route("en.coordinator.quizzes.update", ":id") }}';
+            url = url.replace(':id', lesson_id);
+
+            var formData = new FormData(document.querySelector( '#edit-lesson-content-' + lesson_id ));
+            formData.append('_method', 'PUT');
+
+            $.ajax({
+                url: url,
+                method: "POST",
+                processData: false, // important
+                contentType: false, // important
+                data: formData,
+                dataType: 'JSON',
+                beforeSend: function(){
+                    $(".overlay").toggleClass('d-none');
+                },
+                success:function(data)
+                {
+                    $('#edit-lesson-' + data.lesson_id).modal('hide');
+                    /*
+                    ** Clean defects of modal hide not working proberly
+                    */
+                    $(".modal-backdrop").remove();
+                    $('body').removeClass('modal-open');
+                    /******/
+                    $('.course-curriculum').html(data.curriculum);
+                    swalNormal(data.swal);
+                    $(".overlay").toggleClass('d-none');
+                    location.reload();
+                },
+                error:function(data)
+                {
+                    sweetAlertErrorResponse(data);
+                }
+            })
+
+        });
+        /*** Edit Quiz */
+
     });
 </script>
 @endsection

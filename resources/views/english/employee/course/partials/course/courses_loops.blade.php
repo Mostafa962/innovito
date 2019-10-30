@@ -20,5 +20,6 @@
         </div>
         <!-- ... end Friend Item -->
     </div>
+    
 </div>
 @endforeach

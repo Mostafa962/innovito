@@ -11,6 +11,28 @@
 |
 */
 
+
+
+
+Route::get('/button/{id}',function($id){
+
+return 'hHA';
+// $registered_courses = DB::table('user_lessons')->where('user_id','=',Auth::user()->id)->where('course_id','=',$id)->get();
+
+// return $registered_courses ;
+
+// if($registered_courses->count()<1){
+//     return 0;
+// }
+// else if($registered_courses->count()>3){
+
+// return 10;
+
+// }
+
+// return 40;
+});
+
 Route::get('/login',array(
     'as'=>'en.auth.show',
     'uses'=>'english\AuthController@show'
@@ -99,7 +121,7 @@ Route::group(['middleware' => ['checkAuth']], function ()
         /** Courses */
         Route::resource('courses', 'CourseController');
         Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
-
+        // Route::get('courses/view','CourseController@view')->name('courses.c');
         /** Sections */
         Route::resource('sections', 'SectionController');
 
@@ -111,6 +133,18 @@ Route::group(['middleware' => ['checkAuth']], function ()
 
         /** Badges */
         Route::resource('badges', 'BadgeController');
+
+        /** ClassRooms */
+        Route::resource('classrooms', 'ClassroomController');
+        Route::post('classrooms/filter', 'ClassroomController@filter')->name('classrooms.filter');
+
+        /** Sessions */
+        Route::resource('sessions', 'SessionController');
+        Route::post('sessions/attend', 'SessionController@attend')->name('sessions.attend');
+
+        /** Sections */
+        Route::resource('classroomsections', 'ClassroomSectionController');
+
     });
 
     /**** Employee Part */
@@ -129,6 +163,9 @@ Route::group(['middleware' => ['checkAuth']], function ()
         Route::resource('lessons', 'LessonController');
         Route::post('lessons/filter', 'LessonController@filter')->name('lessons.filter');
         Route::post('lessons/check', 'LessonController@check')->name('lessons.check');
+
+        /** Classrooms */
+        Route::resource('classrooms', 'ClassroomController');
 
     });
 

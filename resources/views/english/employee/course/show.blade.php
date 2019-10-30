@@ -6,16 +6,42 @@
 
 @section('content')
 <!-- Main Header Groups -->
+<div class="row course-header" >
+    <div class="col col-lg-12 m-auto col-md-12 col-sm-12 col-12">
+        <div class="main-header-content text-left">
+            <!-- <h4 class="title">{{$course->title}}</h4> -->
+            <h1 class="title">Introduction To Python Programming</h1>
+            <h4> A Quick and Easy Intro into Python Programming </h4>
+            <div class="rates">
+                <ul class="stars">  
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="far fa-star"></i></li>
+                    <li><i class="far fa-star"></i></li>
+                </ul>
+                <p>4.4 (30,495 ratings)</p>
+                <p>342,337 Employees enrolled</p>
+            </div>
+            <div class="rates">
+                <p>Created by Avinash Jain</p>
+                <p>Last updated 7/2018</p>
+            </div>
+           
 
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row margin-top">
-        <div class="col-lg-4 col-md-12 order-lg-12 order-md-1">
+        
+        <div class="col-lg-4 col-md-12 order-lg-12 order-md-1 stick">
                 <div class="ui-block ">
                         <!-- W-Action -->
                         <div class="widget w-action">
                             <img src="{{asset('') . $course->image}}" alt="{{$course->title}}">
                             <div class="content">
-                                <h4 class="title">{{$course->title}}</h4>
+                               
                                 {{-- <span>THE BEST SOCIAL NETWORK THEME IS HERE!</span> --}}
                                 <a href="{{route('en.employee.courses.content', [$course->slug])}}" class="btn btn-bg-secondary btn-md">Enroll Now!</a>
                             </div>
@@ -102,9 +128,11 @@
                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
 
                                         @foreach ($course->sections as $section)
-                                            <ul class="clear-list block-list content-block">
+                                            <ul class="clear-list block-list content-block content-list ">
                                                 <li class="title-c">
+                                                
                                                     <span class="block-list__label">
+                                                    <i class="fas fa-plus  colaps-icon" ></i>
                                                         {{$section->title}}
                                                     </span>
                                                     <span class="block-list__desc text-right">
@@ -112,13 +140,33 @@
                                                     </span>
                                                 </li>
                                                 @foreach ($section->lessons as $lesson)
-                                                    <li>
+<<<<<<< HEAD
+                                                    <li >
                                                         <span class="block-list__label">
                                                             <i class="far fa-play-circle fa-lg"></i>
                                                             {{$lesson->title}}
                                                         </span>
                                                         <span class="block-list__desc text-right">{{$lesson->content->video_duration}}</span>
                                                     </li>
+=======
+                                                    @if($lesson->lesson_type_id == 8)
+                                                        <li>
+                                                            <span class="block-list__label">
+                                                                <i class="far fa-question-circle fa-lg"></i>
+                                                                {{$lesson->title}}
+                                                            </span>
+                                                            <span class="block-list__desc text-right">{{$lesson->quiz->time_limit}}</span>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <span class="block-list__label">
+                                                                <i class="far fa-play-circle fa-lg"></i>
+                                                                {{$lesson->title}}
+                                                            </span>
+                                                            <span class="block-list__desc text-right">{{$lesson->content->video_duration}}</span>
+                                                        </li>
+                                                    @endif
+>>>>>>> 12c0e8d92b9e2dd6994b0b52827478839499ca90
                                                 @endforeach
                                             </ul>
                                         @endforeach

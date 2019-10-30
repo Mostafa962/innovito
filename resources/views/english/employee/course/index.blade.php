@@ -57,29 +57,100 @@ My Courses
 		</div>
 
         @foreach (Auth::user()->enrolledCourses as $course)
-            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 course-container">
+            <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 course-container">
+            
                 <div class="ui-block" data-mh="friend-groups-item">
                     <!-- Friend Item -->
-                    <div class="friend-item friend-groups">
-                        <div class="friend-header-thumb">
-                            <img src="{{asset('') . $course->image}}" alt="Course-Image">
+                    <div class="friend-item friend-groups courses-item">
+                        <div class="friend-header-thumb" style="background:url({{asset('') . $course->image}}) center center no-repeat;">
+                            <!-- <img src="{{asset('') . $course->image}}" alt="Course-Image"> -->
                         </div>
                         <div class="friend-item-content">
                             <div class="friend-avatar">
                                 <div class="author-content">
                                     <a href="{{route('en.employee.courses.show', [$course->slug])}}" class="h5 author-name">{{$course->title}}</a>
-                                    <br>
-                                    <br>
-                                    <div class="country">{{$course->description}}</div>
+                                    <!-- <br>
+                                    <br> -->
+                                    <!-- <div class="country">{{$course->description}}</div> -->
                                 </div>
                             </div>
-                            <a href="{{route('en.employee.courses.show', [$course->slug])}}"  class="btn btn-blue btn-md-2">Join<div class="ripple-container"></div></a>
+                            <a href="{{route('en.employee.courses.show', [$course->slug])}}" data-target="{{ $course->id }}" class="btn btn-blue btn-md-2"><span class="btn-txt">Join</span><div class="ripple-container"></div></a>
                         </div>
                     </div>
                     <!-- ... end Friend Item -->
                 </div>
             </div>
         @endforeach
+
+        <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 course-container">
+            
+                <div class="ui-block" data-mh="friend-groups-item">
+                    <!-- Friend Item -->
+                    <div class="friend-item friend-groups courses-item">
+                        <div class="friend-header-thumb" style="background:url({{asset('') . $course->image}}) center center no-repeat;">
+                            <!-- <img src="{{asset('') . $course->image}}" alt="Course-Image"> -->
+                        </div>
+                        <div class="friend-item-content">
+                            <div class="friend-avatar">
+                                <div class="author-content">
+                                    <a href="{{route('en.employee.courses.show', [$course->slug])}}" class="h5 author-name">{{$course->title}}</a>
+                                    <!-- <br>
+                                    <br> -->
+                                    <!-- <div class="country">{{$course->description}}</div> -->
+                                </div>
+                            </div>
+                            <a href="{{route('en.employee.courses.show', [$course->slug])}}" data-target="{{ $course->id }}" class="btn btn-blue btn-md-2"><span class="btn-txt">Join</span><div class="ripple-container"></div></a>
+                        </div>
+                    </div>
+                    <!-- ... end Friend Item -->
+                </div>
+            </div>
+            <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 course-container">
+            
+                <div class="ui-block" data-mh="friend-groups-item">
+                    <!-- Friend Item -->
+                    <div class="friend-item friend-groups courses-item">
+                        <div class="friend-header-thumb" style="background:url({{asset('') . $course->image}}) center center no-repeat;">
+                            <!-- <img src="{{asset('') . $course->image}}" alt="Course-Image"> -->
+                        </div>
+                        <div class="friend-item-content">
+                            <div class="friend-avatar">
+                                <div class="author-content">
+                                    <a href="{{route('en.employee.courses.show', [$course->slug])}}" class="h5 author-name">{{$course->title}}</a>
+                                    <!-- <br>
+                                    <br> -->
+                                    <!-- <div class="country">{{$course->description}}</div> -->
+                                </div>
+                            </div>
+                            <a href="{{route('en.employee.courses.show', [$course->slug])}}" data-target="{{ $course->id }}" class="btn btn-blue presrnt btn-md-2"><span class="btn-txt">50%</span><div class="ripple-container"></div></a>
+                        </div>
+                    </div>
+                    <!-- ... end Friend Item -->
+                </div>
+            </div>
+            <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 course-container">
+            
+                <div class="ui-block" data-mh="friend-groups-item">
+                    <!-- Friend Item -->
+                    <div class="friend-item friend-groups courses-item">
+                        <div class="friend-header-thumb" style="background:url({{asset('') . $course->image}}) center center no-repeat;">
+                            <!-- <img src="{{asset('') . $course->image}}" alt="Course-Image"> -->
+                        </div>
+                        <div class="friend-item-content">
+                            <div class="friend-avatar">
+                                <div class="author-content">
+                                    <a href="{{route('en.employee.courses.show', [$course->slug])}}" class="h5 author-name">{{$course->title}}</a>
+                                    <!-- <br>
+                                    <br> -->
+                                    <!-- <div class="country">{{$course->description}}</div> -->
+                                </div>
+                            </div>
+                            <a href="{{route('en.employee.courses.show', [$course->slug])}}" data-target="{{ $course->id }}" class="btn btn-blue completed btn-md-2"><span class="btn-txt">completed</span><div class="ripple-container"></div></a>
+                        </div>
+                    </div>
+                    <!-- ... end Friend Item -->
+                </div>
+            </div>
 
         @include('english.layouts.partials.overlay')
 	</div>
@@ -127,4 +198,33 @@ My Courses
         /*** Filter Courses */
     });
 </script>
+
+ <script>
+
+$(document).ready(function() {
+
+
+
+
+
+    var course_id = $(".btn-blue ").data("target");
+
+
+    
+
+$.ajax({
+
+url : "{{ url('/button/') }}" ,
+type: "get" ,
+success: function(res){
+
+
+console.log(res);
+
+$('.btn-blue ').append('<style>.courses-item .btn-blue:before{width:' + res + '% !important;}</style>');
+}
+});
+}); 
+
+</script> 
 @endsection

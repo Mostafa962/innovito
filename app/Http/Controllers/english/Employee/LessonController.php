@@ -5,6 +5,7 @@ namespace App\Http\Controllers\english\Employee;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class LessonController extends Controller
 {
@@ -87,9 +88,11 @@ class LessonController extends Controller
     public function filter(Request $request)
     {
         $lesson = Lesson::find($request->lesson_id);
+        $show_done = Auth::user()->lessons()->find($request->lesson_id) ? 0 : 1;
 
         return response()->json([
-            'lesson' => $lesson->getLessonView()
+            'lesson' => $lesson->getLessonView(),
+            'show_done' => $show_done
         ]);
 
     }
@@ -99,7 +102,7 @@ class LessonController extends Controller
         $lesson = Lesson::find($request->lesson_id);
         auth()->user()->lessons()->attach($lesson, ['course_id' => $lesson->section->course->id]);
 
-        
+
         return response()->json([
             'lesson' => $lesson->getLessonView()
         ]);

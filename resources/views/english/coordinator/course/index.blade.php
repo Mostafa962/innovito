@@ -59,15 +59,15 @@ My Courses
 
             <div class="friend-item friend-groups create-group" data-mh="friend-groups-item" style="height: 382.5px;">
 
-                <a href="#" class=" full-block" data-toggle="modal" data-target="#create-course"></a>
+                <a href="{{route('en.coordinator.courses.create')}}" class=" full-block" data-toggle="modal" data-target="reate-course"></a>
                 <div class="content">
 
-                    <a href="#" class="  btn btn-control bg-blue" data-toggle="modal" data-target="#create-course">
+                    <a href="{{route('en.coordinator.courses.create')}}" class="  btn btn-control bg-blue">
                         <svg class="olymp-plus-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
                     </a>
 
                     <div class="author-content">
-                        <a href="#" class="h5 author-name">Add Course</a>
+                        <a href="" class="h5 author-name">Add Course</a>
                     </div>
 
                 </div>
@@ -123,9 +123,12 @@ My Courses
 					</div>
 
 					<div class="modal-body">
-                        <form method="post" id="add_course_form" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
+                    <form method="post" id="add_course_form" enctype="multipart/form-data">
+                    @csrf
+                    <div id="example-basic" >
+                        <h3>About course</h3>
+                        <section class="text-left">
+                        <div class="form-group">
                                 <label class="control-label">Course title</label>
                                 <input class="form-control" placeholder="Course title"  type="text" name="title"  required>
                             </div>
@@ -136,6 +139,15 @@ My Courses
                             </div>
 
                             <div class="form-group">
+                                <label class="control-label">Course Image</label>
+                                <input class="form-control" placeholder="image" type="file" name="image" accept="image/*" required>
+                            </div>
+                        </section>
+                        <h3>course details</h3>
+                        <section class="text-left">
+                             
+
+                        <div class="form-group">
                                 <label class="control-label">Course Category</label>
                                 <select class="form-control category-select" name="category_id" required>
                                     @foreach ($categories as $category)
@@ -170,16 +182,16 @@ My Courses
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label">Course Image</label>
-                                <input class="form-control" placeholder="image" type="file" name="image" accept="image/*" required>
-                            </div>
+                           
 
                             <div class="form-group">
                                 <label class="control-label">Course Expiration Date</label>
                                 <input class="form-control" placeholder="image" type="date" name="expired_at" required>
                             </div>
 
+                        </section>
+                        <h3>Employees</h3>
+                        <section class="text-left">
                             <div class="form-group label-floating is-select">
                                 <svg class="olymp-happy-face-icon"><use xlink:href="{{asset('assets')}}/svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                 <label class="control-label">Add Employees</label>
@@ -196,7 +208,13 @@ My Courses
                                     @endforeach
                                 </select>
                             </div>
-                            <button class="btn btn-blue btn-lg full-width">Create Course</button>
+                        </section>
+                    </div>
+                      
+                          
+                         
+                           
+                            <!-- <button class="btn btn-blue btn-lg full-width">Create Course</button> -->
                         </form>
 					</div>
 				</div>

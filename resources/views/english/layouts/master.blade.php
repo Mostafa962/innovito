@@ -25,22 +25,29 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/Bootstrap/dist/css/bootstrap-reboot.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/Bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/Bootstrap/dist/css/bootstrap-grid.css">
-
+	
+	
+	
     <!-- Plugins -->
     <!-- Select2 -->
 	<link rel="stylesheet" href="{{asset('/plugins/adminlte/bower_components/select2/dist/css/select2.min.css')}}">
 	
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 
+
+	<!-- input file -->
+	<link rel="stylesheet" href="{{asset('assets/')}}/css/normalize.css">
+	<link rel="stylesheet" href="{{asset('assets/')}}/css/demo.css">
+	<link rel="stylesheet" href="{{asset('assets/')}}/css/component.css">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.steps@1.0.2/dist/jquery-steps.min.css"> -->
+
+
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/main.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/')}}/css/fonts.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
- <!-- input file -->
- <link rel="stylesheet" href="{{asset('assets/')}}/css/normalize.css">
-	 <link rel="stylesheet" href="{{asset('assets/')}}/css/demo.css">
-	 <link rel="stylesheet" href="{{asset('assets/')}}/css/component.css">
+ 
 
     <!-- Custom CSS -->
     @yield('style')
@@ -351,6 +358,7 @@
 <script src="{{asset('assets/')}}/js/libs/ion.rangeSlider.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script>
 
 
 <script src="{{asset('assets/')}}/js/main.js"></script>
