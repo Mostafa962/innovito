@@ -597,7 +597,6 @@ $(document).ready(function(){
 
 
 
-<<<<<<< HEAD
 	
 	
 // ================================================
@@ -649,7 +648,11 @@ $(document).on('click', '.colaps-icon', function(){
 $( function() {
     $( "#datepicker" ).datepicker();
   } );
-=======
->>>>>>> 12c0e8d92b9e2dd6994b0b52827478839499ca90
 
+// ========= course panel  =====================
+
+  $( function() {
+    $( "#course-panel #tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#course-panel #tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+  } );
 

@@ -16933,3 +16933,44 @@ display: none;
   -webkit-align-items: center;
   align-items: center;
 }
+#course-panel #tabs{
+  border:0;
+}
+.ui-tabs-vertical { 
+ 
+}
+.ui-tabs-vertical .ui-tabs-nav { 
+  /* padding: .2em .1em .2em .2em; 
+  float: left; 
+  width: 12em;  */
+  background: transparent;
+  border: 0;
+}
+.ui-tabs-vertical .ui-tabs-nav li {
+  background: transparent;
+  border: 0;
+  padding: 10px !important;
+  border-radius: 2px;
+  margin: 3px 0 !important;
+   width: 100%; 
+   border-bottom-width: 1px !important;
+    border-right-width: 1px !important; 
+   
+}
+  .ui-tabs-vertical .ui-tabs-nav li a { 
+    display:block;
+    width: 100%; 
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+  background: #00AAF1;
+  padding-bottom: 0;
+  padding-right: .1em;
+  border-left: 3px solid #494C62 ; 
+}
+.ui-tabs-vertical .ui-tabs-panel {
+     padding: 1em;
+    
+}
+.ui-tabs .ui-tabs-panel {
+  border: 1px solid #e6ecf5 !important;
+}

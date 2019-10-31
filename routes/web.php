@@ -121,6 +121,9 @@ Route::group(['middleware' => ['checkAuth']], function ()
         /** Courses */
         Route::resource('courses', 'CourseController');
         Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
+        Route::get('course/content/', function(){
+            return view('english.coordinator.course.content');
+        });
         // Route::get('courses/view','CourseController@view')->name('courses.c');
         /** Sections */
         Route::resource('sections', 'SectionController');
@@ -155,6 +158,7 @@ Route::group(['middleware' => ['checkAuth']], function ()
         Route::resource('courses', 'CourseController');
         Route::post('courses/filter', 'CourseController@filter')->name('courses.filter');
         Route::get('courses/{course}/content', 'CourseController@content')->name('courses.content');
+
 
         // /** Sections */
         // Route::resource('sections', 'SectionController');
